@@ -1,5 +1,6 @@
 import { useState } from "react"
 import ComicsList from "./components/ComicsList"
+import AddComicForm from "./components/AddComicForm"
 
 function App() {
 
@@ -7,18 +8,35 @@ function App() {
 
   const comics = [
     {
+      id: 1,
       name: "Test comic 1",
       additionalName: "",
       translation: false,
       originalName: "",
       details: "This is the test book",
       pages: "200",
-      publicationYear: "2000",
+      publicationYear: 2020,
       ISBN: "1234567891234",
       selfPublished: false,
       publisher: "Jalava",
       language: "English",
-      dateRead: new Date(),
+      dateRead: "12.2.2024",
+      ownThoughts: "ye ye ye",
+    },
+    {
+      id: 2,
+      name: "Test comic 2",
+      additionalName: "",
+      translation: false,
+      originalName: "Testisarjakuva 2",
+      details: "This is the test book number 2",
+      pages: "300",
+      publicationYear: 2006,
+      ISBN: "1234567895555",
+      selfPublished: true,
+      publisher: "",
+      language: "English",
+      dateRead: "20.2.2024",
       ownThoughts: "ye ye ye",
     },
   ]
@@ -32,6 +50,7 @@ function App() {
         Some information here...
       </div>
       <ComicsList comics={comics} />
+      <AddComicForm />
     </>
   )
 }
