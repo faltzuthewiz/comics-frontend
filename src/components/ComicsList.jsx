@@ -1,5 +1,4 @@
 function ComicsList({ comics }) {
-    console.log(comics)
     return (
         <>
             <h2>Sarjakuvalista</h2>
