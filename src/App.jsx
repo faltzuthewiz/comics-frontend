@@ -63,7 +63,6 @@ function App() {
 
   const handleFilter = (e) => {
     const keyword = e.target.value
-    console.log(keyword)
 
     if (keyword !== '') {
       const results = comicsList.filter((comic) => {
@@ -76,12 +75,37 @@ function App() {
     setFilterName(keyword)
   }
 
+  const [comic, setComic] = useState({
+    name: "",
+  })
+
+  const change = (e) => {
+    setComic({
+      ...comic,
+      [e.target.name]: e.target.value,
+      id: comicsList.length + 1,
+    })
+  }
+
+  const [newName, setNewName] = useState('')
+
+  const addComic = (e) => {
+    e.preventDefault()
+
+    setComic({
+      name: "",
+    })
+
+    setComicsList(comicsList.concat(comic))
+    setComicsToShow(comicsList.concat(comic))
+  }
+
   return (
     <>
       <Introduction />
       <Filter onChange={handleFilter} value={filterName} />
       <ComicsList comics={comicsToShow} />
-      <AddComicForm />
+      <AddComicForm change={change} addComic={addComic} comic={comic} />
     </>
   )
 }
