@@ -13,6 +13,8 @@ function App() {
       additionalName: "",
       translation: false,
       originalName: "",
+      artist: "Pii Rtäjä",
+      writer: "Teppo Testaaja",
       details: "This is the test book",
       pages: "200",
       publicationYear: 2020,
@@ -29,6 +31,8 @@ function App() {
       additionalName: "",
       translation: false,
       originalName: "Testisarjakuva 2",
+      artist: "Pii Rtäjä",
+      writer: "Teppo Testaaja",
       details: "This is the test book number 2",
       pages: "300",
       publicationYear: 2006,
@@ -45,6 +49,8 @@ function App() {
       additionalName: "",
       translation: true,
       originalName: "Pandemic Mindmap",
+      artist: "Pii Rtäjä",
+      writer: "Teppo Testaaja",
       details: "This is the test book number 3",
       pages: "300",
       publicationYear: 2021,
@@ -75,37 +81,56 @@ function App() {
     setFilterName(keyword)
   }
 
+  const [isChecked, setIsChecked] = useState(false)
+
   const [comic, setComic] = useState({
     name: "",
+    translation: isChecked,
   })
 
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked)
+  }
+
+
+  // The checkbox is not currently synching... It changes visually only when the change-function is activated. I need to come up with a better solution.
   const change = (e) => {
+
     setComic({
       ...comic,
       [e.target.name]: e.target.value,
+      translation: isChecked,
       id: comicsList.length + 1,
     })
-  }
 
-  const [newName, setNewName] = useState('')
+    console.log(comic)
+  }
+  console.log(isChecked)
 
   const addComic = (e) => {
     e.preventDefault()
 
+    setIsChecked(false)
+
     setComic({
       name: "",
+      //translation: false,
+      translation: isChecked,
     })
+
+
 
     setComicsList(comicsList.concat(comic))
     setComicsToShow(comicsList.concat(comic))
   }
+  console.log(comicsList)
 
   return (
     <>
       <Introduction />
       <Filter onChange={handleFilter} value={filterName} />
       <ComicsList comics={comicsToShow} />
-      <AddComicForm change={change} addComic={addComic} comic={comic} />
+      <AddComicForm change={change} addComic={addComic} comic={comic} changeCheckbox={handleCheckboxChange} />
     </>
   )
 }

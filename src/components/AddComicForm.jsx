@@ -1,6 +1,8 @@
 import { useState } from "react"
 
-function AddComicForm({ change, addComic, comic }) {
+function AddComicForm({ change, addComic, comic, changeCheckbox }) {
+
+
 
     return (
         <div>
@@ -9,6 +11,9 @@ function AddComicForm({ change, addComic, comic }) {
             <form onSubmit={addComic}>
                 <label>Sarjakuvan nimi
                     <input type="text" name="name" value={comic.name} onChange={change} /> <br />
+                </label>
+                <label>Onko teos käännös?
+                    <input type="checkbox" name="translation" checked={comic.translation} onChange={changeCheckbox} /> <br />
                 </label>
                 <button type="submit">Tallenna</button>
             </form>
