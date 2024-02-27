@@ -81,41 +81,47 @@ function App() {
     setFilterName(keyword)
   }
 
-  const [isChecked, setIsChecked] = useState(false)
+  // const [isChecked, setIsChecked] = useState(false) and this
 
   const [comic, setComic] = useState({
     name: "",
-    translation: isChecked,
+    artist: "",
+    //translation: isChecked,
+    translation: false,
   })
 
+  /* I can probably get rid of this 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked)
   }
-
+*/
 
   // The checkbox is not currently synching... It changes visually only when the change-function is activated. I need to come up with a better solution.
   const change = (e) => {
+    const { name, value, type, checked } = e.target
+    const newValue = type === 'checkbox' ? checked : value
 
     setComic({
       ...comic,
-      [e.target.name]: e.target.value,
-      translation: isChecked,
+      //[e.target.name]: e.target.value,
+      // translation: isChecked,
+      [name]: newValue,
       id: comicsList.length + 1,
     })
 
     console.log(comic)
   }
-  console.log(isChecked)
 
   const addComic = (e) => {
     e.preventDefault()
 
-    setIsChecked(false)
+    //setIsChecked(false)
 
     setComic({
       name: "",
-      //translation: false,
-      translation: isChecked,
+      artist: "",
+      translation: false,
+      //translation: isChecked,
     })
 
 
@@ -125,12 +131,14 @@ function App() {
   }
   console.log(comicsList)
 
+
+  // changeCheckbox={handleCheckboxChange}
   return (
     <>
       <Introduction />
       <Filter onChange={handleFilter} value={filterName} />
       <ComicsList comics={comicsToShow} />
-      <AddComicForm change={change} addComic={addComic} comic={comic} changeCheckbox={handleCheckboxChange} />
+      <AddComicForm change={change} addComic={addComic} comic={comic} />
     </>
   )
 }
