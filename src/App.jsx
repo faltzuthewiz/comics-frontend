@@ -28,7 +28,7 @@ function App() {
     {
       id: 2,
       name: "Test comic 2",
-      additionalName: "",
+      additionalName: "The revenge of the test comics",
       translation: false,
       originalName: "Testisarjakuva 2",
       artist: "Pii Rtäjä",
@@ -49,10 +49,28 @@ function App() {
       additionalName: "",
       translation: true,
       originalName: "Pandemic Mindmap",
-      artist: "Pii Rtäjä",
-      writer: "Teppo Testaaja",
+      artist: "Karstein Volle",
+      writer: "Karstein Volle",
       details: "This is the test book number 3",
       pages: "300",
+      publicationYear: 2021,
+      ISBN: "1234567895522",
+      selfPublished: false,
+      publisher: "",
+      language: "Finnish",
+      dateRead: "21.2.2024",
+      ownThoughts: "I read this comic.",
+    },
+    {
+      id: 4,
+      name: "Sandman deluxe 4",
+      additionalName: "Utujen vuodenaika",
+      translation: true,
+      originalName: "The Sandman: The Deluxe Edtion Boom Four",
+      artist: "Kelley Jones + useita",
+      writer: "Neil Gaiman",
+      details: "This is the test book number 4",
+      pages: "264",
       publicationYear: 2021,
       ISBN: "1234567895522",
       selfPublished: false,
@@ -81,30 +99,30 @@ function App() {
     setFilterName(keyword)
   }
 
-  // const [isChecked, setIsChecked] = useState(false) and this
-
   const [comic, setComic] = useState({
     name: "",
-    artist: "",
-    //translation: isChecked,
+    additionalName: "",
     translation: false,
+    originalName: "",
+    artist: "",
+    writer: "",
+    details: "",
+    pages: "",
+    publicationYear: 0,
+    ISBN: "",
+    selfPublished: false,
+    publisher: "",
+    language: "Finnish",
+    dateRead: "",
+    ownThoughts: "",
   })
 
-  /* I can probably get rid of this 
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked)
-  }
-*/
-
-  // The checkbox is not currently synching... It changes visually only when the change-function is activated. I need to come up with a better solution.
   const change = (e) => {
     const { name, value, type, checked } = e.target
     const newValue = type === 'checkbox' ? checked : value
 
     setComic({
       ...comic,
-      //[e.target.name]: e.target.value,
-      // translation: isChecked,
       [name]: newValue,
       id: comicsList.length + 1,
     })
@@ -115,24 +133,29 @@ function App() {
   const addComic = (e) => {
     e.preventDefault()
 
-    //setIsChecked(false)
-
     setComic({
       name: "",
-      artist: "",
+      additionalName: "",
       translation: false,
-      //translation: isChecked,
+      originalName: "",
+      artist: "",
+      writer: "",
+      details: "",
+      pages: "",
+      publicationYear: 0,
+      ISBN: "",
+      selfPublished: false,
+      publisher: "",
+      language: "Finnish",
+      dateRead: "",
+      ownThoughts: "",
     })
-
-
 
     setComicsList(comicsList.concat(comic))
     setComicsToShow(comicsList.concat(comic))
   }
   console.log(comicsList)
 
-
-  // changeCheckbox={handleCheckboxChange}
   return (
     <>
       <Introduction />
