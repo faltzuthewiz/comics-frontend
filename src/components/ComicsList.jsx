@@ -1,4 +1,7 @@
-function ComicsList({ comics }) {
+import Image from "./Image"
+
+function ComicsList({ comics, showbtn }) {
+
     return (
         <>
             <h2>Sarjakuvalista</h2>
@@ -7,11 +10,11 @@ function ComicsList({ comics }) {
                     comics.map(comic => {
                         return (
                             <div key={comic.id}>
-                                <div style={{ height: "150px", width: "120px", backgroundColor: "pink" }}>Image placeholder</div>
+                                <Image image={comic.image} />
                                 <p>{comic.name} {comic.additionalName}</p>
                                 <p>Kirjoittaja: {comic.writer}, piirtäjä: {comic.artist}</p>
-                                <p>Julkaistu: {comic.publicationYear}, luettu: {comic.dateRead}</p>
-                                <button>Näytä lisää tietoja</button>
+                                <p>Julkaisuvuosi: {comic.publicationYear}, luettu: {comic.dateRead}</p>
+                                <button onClick={() => showbtn(comic.id)}>Näytä lisää tietoja</button>
                             </div>
                         )
                     })

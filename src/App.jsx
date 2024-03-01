@@ -3,6 +3,7 @@ import ComicsList from "./components/ComicsList"
 import AddComicForm from "./components/AddComicForm"
 import Filter from "./components/Filter"
 import Introduction from "./components/Introduction"
+import Results from "./components/Results"
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
       publisher: "Jalava",
       language: "English",
       dateRead: "12.2.2024",
+      image: "",
       ownThoughts: "ye ye ye",
     },
     {
@@ -41,6 +43,7 @@ function App() {
       publisher: "",
       language: "English",
       dateRead: "20.2.2024",
+      image: "",
       ownThoughts: "ye ye ye",
     },
     {
@@ -59,6 +62,7 @@ function App() {
       publisher: "",
       language: "Finnish",
       dateRead: "21.2.2024",
+      image: "pandemia-mielessain_VolleK.jpg",
       ownThoughts: "I read this comic.",
     },
     {
@@ -77,6 +81,7 @@ function App() {
       publisher: "",
       language: "Finnish",
       dateRead: "21.2.2024",
+      image: "",
       ownThoughts: "I read this comic.",
     },
   ])
@@ -154,13 +159,20 @@ function App() {
     setComicsList(comicsList.concat(comic))
     setComicsToShow(comicsList.concat(comic))
   }
-  console.log(comicsList)
+
+  const handleShowButton = (id) => {
+    const results = comicsList.filter((comic) => {
+      return (comic.id === id)
+    })
+
+    setComicsToShow(results)
+  }
 
   return (
     <>
       <Introduction />
       <Filter onChange={handleFilter} value={filterName} />
-      <ComicsList comics={comicsToShow} />
+      <Results comics={comicsToShow} showbtn={handleShowButton} />
       <AddComicForm change={change} addComic={addComic} comic={comic} />
     </>
   )
