@@ -49,21 +49,21 @@ function App() {
     {
       id: 3,
       name: "Pandemia mielessäin",
-      additionalName: "",
+      additionalName: "Karstein Vollen improvisoitu eristyspäiväkirja",
       translation: true,
       originalName: "Pandemic Mindmap",
       artist: "Karstein Volle",
       writer: "Karstein Volle",
-      details: "This is the test book number 3",
-      pages: "300",
+      details: "Pandemia Mielessäin on Karstein Vollen improvisoitu koronapäiväkirja keväästä 2020, ensimmäisen sulkutilan ajasta. Miten selviytyä jokapäiväisestä arjesta eristyksissä? Kuinka selittää lapsille, että he eivät voi tavata kavereitaan? Miltä tuntuu, kun kotipalvelu vierailee naapuruston yksinäisten vanhusten luona täydessä suojavaatetuksessa... Teos kuvaa päiviä, jolloin ajatukset palaavat kaikkeen, mitä ihminen on kokenut elämässään. Pohdinnan aiheina ovat tehdyt elämänvalinnat, kuolleiden vanhempien ja menehtyneiden ystävien kaipuu - eikä vähäisimpänä kavala tauti, joka piileskelee joka nurkan takana.",
+      pages: "96",
       publicationYear: 2021,
-      ISBN: "1234567895522",
+      ISBN: "9789527436035",
       selfPublished: false,
-      publisher: "",
+      publisher: "Täysi Käsi Oy",
       language: "Finnish",
-      dateRead: "21.2.2024",
+      dateRead: "10.2.2024",
       image: "pandemia-mielessain_VolleK.jpg",
-      ownThoughts: "I read this comic.",
+      ownThoughts: "Sarjisvuosi 2024 on lähtenyt aika tahmeasti käyntiin. Tämäkin oli alun perin joululomalla lainattu teos, mutta luinkin sen vasta helmikuussa loppuun. Teos sivusi keski-ikäisen miehen mielenterveyttä, koronapandemian eristysaikaa ja käsitteli kuolemaa.",
     },
     {
       id: 4,
@@ -71,18 +71,18 @@ function App() {
       additionalName: "Utujen vuodenaika",
       translation: true,
       originalName: "The Sandman: The Deluxe Edtion Boom Four",
-      artist: "Kelley Jones + useita",
+      artist: "Kelley Jones, Mike Dringenberg, Malcolm Jones III, Matt Wagner, Dick Giordano, George Pratt, P. Craig Russell",
       writer: "Neil Gaiman",
-      details: "This is the test book number 4",
+      details: "Pää Hornan ennemmin kuin orja Taivaan. Rakastetut Coraline, Neverwhere, Tähtisumua ja Mirrormask olisivat ehkä riittäneet nostamaan Neil Gaimanin (s. 1960) yhdeksi vuosituhannen taitteen fantasian suurista äänistä. Merkitystä olisi korostanut, että aidon renessanssimiehen tavoin hän iskee tarinaa moneen mediaan painetusta sanasta kuunnelmien kautta elokuviin.Gaiman oli kuitenkin ehtinyt jo 1980-luvun lopulla elvyttää DC Comicsin Sandman-hahmon. Myytit ja arkkityypit omaleimaisille oivalluksilleen naittamalla hän lunasti paikan samassa jatkumossa Homeroksen, Tolkienin ja ystävänsä Alan Mooren kanssa. Sandman kulkee eri kulttuureissa eri nimillä kuten Morpheus ja Nukkumatti, mutta Gaimanin neronleimaus oli luoda kollektiivisen alitajunnan läpitunkema Unten Valtakunta ja mystisten, jumaliakin vanhempien Ikuisten suku. Tähän häilyvään maisemaan ja hahmogalleriaan kuljettaa alkuperäiset Sandman-lehdet 21-28 ja tekijöiden työprosessia avaavaa bonusainesta sisältävä Utujen vuodenaika. Muun muassa Miltonin Kadotetusta paratiisista inspiraatiota uuttavan tarinan huippukohdaksi nousee Sandmanin vierailu Helvetissä, jonka isännän tehtävistä Lucifer on juuri luopunut.",
       pages: "264",
-      publicationYear: 2021,
-      ISBN: "1234567895522",
+      publicationYear: 2016,
+      ISBN: "9788869712753",
       selfPublished: false,
-      publisher: "",
+      publisher: "RW Kustannus",
       language: "Finnish",
-      dateRead: "21.2.2024",
+      dateRead: "25.1.2024",
       image: "",
-      ownThoughts: "I read this comic.",
+      ownThoughts: "Luin tämän sarjakuvan pikkuhiljaa parin viikon aikana. Olin lainannut tämän jo oikeastaan joululomalla vieraillessani vanhempieni luona, mutta en ehtinyt lukea sitä, toisin kuin avopuolisoni. Kun tulimme kotiin, kumppanini kävi lainaamassa tämän ja seuraavankin Sandmanin. Lainasimme toisillemme siis käytännössä saman sarjakuvan - hah haa! Inspiraationa Sandmanin Luciferin ulkonäköön on kerrottu olleen David Bowie, ja samaa näköä näyttää olevan, ainakin joissain ruuduissa. Toisaalta joissain ruuduissa Lucifer näyttääkin taas täysin erilaiselta...",
     },
   ])
 
@@ -119,6 +119,7 @@ function App() {
     publisher: "",
     language: "Finnish",
     dateRead: "",
+    image: "",
     ownThoughts: "",
   })
 
@@ -153,6 +154,7 @@ function App() {
       publisher: "",
       language: "Finnish",
       dateRead: "",
+      image: "",
       ownThoughts: "",
     })
 
@@ -167,6 +169,8 @@ function App() {
 
     setComicsToShow(results)
   }
+
+  console.log(comicsList)
 
   return (
     <>

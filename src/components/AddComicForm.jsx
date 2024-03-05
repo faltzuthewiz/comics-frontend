@@ -58,6 +58,9 @@ function AddComicForm({ change, addComic, comic }) {
                 <label>Omat ajatukset
                     <textarea name="ownThoughts" value={comic.ownThoughts} onChange={change} /> <br />
                 </label>
+                <label>Kansikuva
+                    <input type="file" name="image" value={comic.image} onChange={change} id="fileInput" accept=".jpg, .jpeg, .png" /> <br />
+                </label>
                 <button type="submit">Tallenna</button>
             </form>
         </div>
