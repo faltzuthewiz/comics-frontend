@@ -1,9 +1,9 @@
 import { useState } from "react"
-import ComicsList from "./components/ComicsList"
 import AddComicForm from "./components/AddComicForm"
 import Filter from "./components/Filter"
 import Introduction from "./components/Introduction"
 import Results from "./components/Results"
+import TabsMUI from "./muinavi/TabsMUI"
 
 function App() {
 
@@ -174,6 +174,7 @@ function App() {
 
   return (
     <>
+      <TabsMUI></TabsMUI>
       <Introduction />
       <Filter onChange={handleFilter} value={filterName} />
       <Results comics={comicsToShow} showbtn={handleShowButton} />
