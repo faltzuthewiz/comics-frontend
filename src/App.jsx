@@ -4,6 +4,7 @@ import Filter from "./components/Filter"
 import Introduction from "./components/Introduction"
 import Results from "./components/Results"
 import TabsMUI from "./muinavi/TabsMUI"
+import { Box } from "@mui/material"
 
 function App() {
 
@@ -175,10 +176,12 @@ function App() {
   return (
     <>
       <TabsMUI></TabsMUI>
-      <Introduction />
-      <Filter onChange={handleFilter} value={filterName} />
-      <Results comics={comicsToShow} showbtn={handleShowButton} />
-      <AddComicForm change={change} addComic={addComic} comic={comic} />
+      <Box>
+        <Introduction />
+        <Filter onChange={handleFilter} value={filterName} />
+        <Results comics={comicsToShow} showbtn={handleShowButton} />
+        <AddComicForm change={change} addComic={addComic} comic={comic} />
+      </Box>
     </>
   )
 }

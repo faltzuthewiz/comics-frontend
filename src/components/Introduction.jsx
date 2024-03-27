@@ -1,8 +1,12 @@
+import { Box, Typography } from "@mui/material"
+
 function Introduction() {
     return (
         <>
-            <h1>Sonjan sarjiscorner</h1>
-            <p>Tervetuloa Sonjan sarjiscorneriin! Tällä sivustolla esittelen lukemiani sarjakuvia.</p>
+            <Box>
+                <Typography variant="h1">Sonjan sarjiscorner</Typography>
+                <Typography>Tervetuloa Sonjan sarjiscorneriin! Tällä sivustolla esittelen lukemiani sarjakuvia.</Typography>
+            </Box>
         </>
     )
 }
