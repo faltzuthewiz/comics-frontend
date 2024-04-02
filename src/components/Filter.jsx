@@ -1,12 +1,17 @@
+import { Box, TextField, Typography } from "@mui/material"
+import SearchIcon from '@mui/icons-material/Search';
+
 function Filter({ onChange, value }) {
     return (
-        <div>
+        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
             <form action="">
-                <label>Suodata sarjakuvia nimen perusteella<br />
-                    <input type="search" value={value} onChange={onChange} />
-                </label>
+                <Typography>Suodata sarjakuvia teoksen nimen perusteella</Typography>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                    <SearchIcon sx={{}} />
+                    <TextField id="search-bar" onChange={onChange} label="Suodata sarjakuvia" value={value} />
+                </Box>
             </form>
-        </div>
+        </Box>
     )
 }
 
