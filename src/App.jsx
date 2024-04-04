@@ -137,6 +137,20 @@ function App() {
     console.log(comic)
   }
 
+  const changeCheck = (e) => {
+    setComic({
+      ...comic,
+      [e.target.name]: e.target.checked,
+      id: comicsList.length + 1,
+    })
+  }
+
+  const [state, setState] = useState({
+    translation: false,
+  })
+
+  // New change functions for checkbox typed change
+
   const addComic = (e) => {
     e.preventDefault()
 
@@ -180,7 +194,7 @@ function App() {
         <Introduction />
         <Filter onChange={handleFilter} value={filterName} />
         <Results comics={comicsToShow} showbtn={handleShowButton} />
-        <AddComicForm change={change} addComic={addComic} comic={comic} />
+        <AddComicForm change={change} changeCheck={changeCheck} addComic={addComic} comic={comic} />
       </Box>
     </>
   )

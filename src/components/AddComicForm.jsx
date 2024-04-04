@@ -1,31 +1,27 @@
-function AddComicForm({ change, addComic, comic }) {
+import { Box, Button, FormControlLabel, Paper, Switch, TextField, Typography } from "@mui/material"
+
+function AddComicForm({ change, changeCheck, addComic, comic }) {
 
     return (
-        <div>
-            <h2>Lisää uusi sarjakuva</h2>
+        <Paper sx={{ maxWidth: 1200 }}>
+            <Typography variant="h2">Lisää uusi sarjakuva</Typography>
 
-            <form onSubmit={addComic}>
-                <label>Sarjakuvan nimi
-                    <input type="text" name="name" value={comic.name} onChange={change} /> <br />
-                </label>
-                <label>Teoksen lisänimi
-                    <input type="text" name="additionalName" value={comic.additionalName} onChange={change} /> <br />
-                </label>
-                <label>Piirtäjä
-                    <input type="text" name="artist" value={comic.artist} onChange={change} /> <br />
-                </label>
-                <label>Käsikirjoittaja
-                    <input type="text" name="writer" value={comic.writer} onChange={change} /> <br />
-                </label>
-                <label>Onko teos käännös?
-                    <input type="checkbox" name="translation" checked={comic.translation} onChange={change} /> <br />
-                </label>
-                <label>Alkuperäinen nimi
-                    <input type="text" name="originalName" value={comic.originalName} onChange={change} /> <br />
-                </label>
-                <label>Kuvaus
-                    <textarea name="details" value={comic.details} onChange={change} /> <br />
-                </label>
+            <Box component='form' autoComplete='off' sx={{ '& .MuiTextField-root': { marginBottom: 2 } }}>
+                <TextField label='Sarjakuvan nimi' name="name" value={comic.name} onChange={change} fullWidth />
+                <br />
+                <TextField label='Teoksen lisänimi' name="additionalName" value={comic.additionalName} onChange={change} fullWidth />
+                <br />
+                <TextField label='Piirtäjä' name="artist" value={comic.artist} onChange={change} fullWidth />
+                <br />
+                <TextField label='Käsikirjoittaja' name="writer" value={comic.writer} onChange={change} fullWidth />
+                <br />
+                <FormControlLabel labelPlacement="start" label='Onko teos käännös?' control={<Switch color="primary" checked={comic.translation} onChange={changeCheck} name="translation" />} />
+                <br />
+                <TextField label='Alkuperäinen nimi' name="originalName" value={comic.originalName} onChange={change} fullWidth />
+                <br />
+                <TextField label='Kuvaus' name="details" value={comic.details} onChange={change} multiline rows='4' fullWidth />
+                <br />
+
                 <label>Sivumäärä
                     <input type="text" name="pages" value={comic.pages} onChange={change} /> <br />
                 </label>
@@ -35,12 +31,12 @@ function AddComicForm({ change, addComic, comic }) {
                 <label>ISBN
                     <input type="text" name="ISBN" value={comic.ISBN} onChange={change} /> <br />
                 </label>
-                <label>Onko teos omakustanne?
-                    <input type="checkbox" name="selfPublished" checked={comic.selfPublished} onChange={change} /> <br />
-                </label>
-                <label>Julkaisija
-                    <input type="text" name="publisher" value={comic.publisher} onChange={change} /> <br />
-                </label>
+                <FormControlLabel labelPlacement="start" label='Onko teos omakustanne?' control={<Switch color="primary" checked={comic.selfPublished} onChange={changeCheck} name="selfPublished" />} />
+                <br />
+
+                <TextField label='Julkaisija' name="publisher" value={comic.publisher} onChange={change} fullWidth />
+                <br />
+
                 <label>Kieli
                     <select name="language" defaultValue={comic.language} onChange={change}>
                         <option value="Finnish">suomi</option>
@@ -55,15 +51,15 @@ function AddComicForm({ change, addComic, comic }) {
                 <label>Luettu loppuun päivämäärällä
                     <input type="text" name="dateRead" value={comic.dateRead} onChange={change} /> <br />
                 </label>
-                <label>Omat ajatukset
-                    <textarea name="ownThoughts" value={comic.ownThoughts} onChange={change} /> <br />
-                </label>
+                <TextField label='Omat ajatukset' name="ownThoughts" value={comic.ownThoughts} onChange={change} multiline rows='4' fullWidth />
+                <br />
+
                 <label>Kansikuva
                     <input type="file" name="image" value={comic.image} onChange={change} id="fileInput" accept=".jpg, .jpeg, .png" /> <br />
                 </label>
-                <button type="submit">Tallenna</button>
-            </form>
-        </div>
+                <Button variant="contained" onClick={addComic}>Tallenna</Button>
+            </Box>
+        </Paper>
     )
 }
 
