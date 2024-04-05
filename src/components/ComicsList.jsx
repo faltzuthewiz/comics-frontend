@@ -1,7 +1,10 @@
-import Image from "./Image"
 import { Box, Button, Card, CardActions, CardContent, CardHeader, CardMedia, Grid, Typography } from "@mui/material"
 
 function ComicsList({ comics, showbtn }) {
+
+    function formatDate(string) {
+        return new Date(string).toLocaleDateString('fi-FI', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    }
 
     return (
         <>
@@ -22,7 +25,7 @@ function ComicsList({ comics, showbtn }) {
                                         <Typography>Kirjoittaja: {comic.writer}</Typography>
                                         <Typography>Piirtäjä: {comic.artist}</Typography>
                                         <Typography>Julkaisuvuosi: {comic.publicationYear}</Typography>
-                                        <Typography>Luettu: {comic.dateRead}</Typography>
+                                        <Typography>Luettu: {formatDate(comic.dateRead)}</Typography>
                                     </CardContent>
                                     <CardActions sx={{}}>
                                         <Button color="primary" onClick={() => showbtn(comic.id)}>Näytä lisätietoja</Button>

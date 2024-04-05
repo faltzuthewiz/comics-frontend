@@ -1,6 +1,12 @@
 import { Box, Button, FormControlLabel, Paper, Switch, TextField, Typography } from "@mui/material"
 
-function AddComicForm({ change, changeCheck, addComic, comic }) {
+import { LocalizationProvider } from "@mui/x-date-pickers"
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3'
+import fi from 'date-fns/locale/fi'
+
+import { DesktopDatePicker } from "@mui/x-date-pickers"
+
+function AddComicForm({ change, changeCheck, changeDate, addComic, comic }) {
 
     return (
         <Paper sx={{ maxWidth: 1200 }}>
@@ -48,12 +54,12 @@ function AddComicForm({ change, changeCheck, addComic, comic }) {
                     </select>
                     <br />
                 </label>
-                <label>Luettu loppuun päivämäärällä
-                    <input type="text" name="dateRead" value={comic.dateRead} onChange={change} /> <br />
-                </label>
+                <Typography>Luettu loppuun päivämäärällä</Typography>
+                <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={fi}>
+                    <DesktopDatePicker sx={{ width: '100%' }} onChange={changeDate} name="dateRead" value={comic.dateRead} />
+                </LocalizationProvider>
                 <TextField label='Omat ajatukset' name="ownThoughts" value={comic.ownThoughts} onChange={change} multiline rows='4' fullWidth />
                 <br />
-
                 <label>Kansikuva
                     <input type="file" name="image" value={comic.image} onChange={change} id="fileInput" accept=".jpg, .jpeg, .png" /> <br />
                 </label>
