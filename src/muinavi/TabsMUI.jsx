@@ -1,9 +1,10 @@
-import { AppBar, Box, Typography, Tabs, Tab } from "@mui/material";
+import { AppBar, Box, Container, Typography, Tabs, Tab, Toolbar } from "@mui/material";
 import { useState } from "react";
 import HomeIcon from '@mui/icons-material/Home';
 import ListIcon from '@mui/icons-material/List';
 import InfoIcon from '@mui/icons-material/Info';
 import CreateIcon from '@mui/icons-material/Create';
+import { Link, Outlet } from "react-router-dom";
 
 function TabsMUI() {
 
@@ -14,15 +15,21 @@ function TabsMUI() {
     }
 
     return (
-        <Box>
+        <Box sx={{ width: '100%' }}>
             <AppBar position="fixed">
-                <Tabs variant="fullWidth" value={value} textColor="inherit" onChange={handleChange}>
-                    <Tab label="Etusivu" icon={<HomeIcon />} />
-                    <Tab label="Sarjakuvalista" icon={<ListIcon />} />
-                    <Tab label="Lisää uusi" icon={<CreateIcon />} />
-                    <Tab label="Tietoa sivustosta" icon={<InfoIcon />} />
-                </Tabs>
+                <Container maxWidth={false} disableGutters={true} >
+                    <Toolbar maxWidth={false} disableGutters={false}>
+                        <Typography variant="h6" sx={{ flexGrow: 0.3 }}>Sonjan sarjiscorner</Typography>
+                        <Tabs variant="fullWidth" value={value} textColor="inherit" onChange={handleChange}>
+                            <Tab label="Etusivu" icon={<HomeIcon />} component={Link} to='/' />
+                            <Tab label="Sarjakuvalista" icon={<ListIcon />} component={Link} to='listaa' />
+                            <Tab label="Lisää uusi" icon={<CreateIcon />} component={Link} to='lisaa' />
+                            <Tab label="Tietoa sivustosta" icon={<InfoIcon />} component={Link} to='info' />
+                        </Tabs>
+                    </Toolbar>
+                </Container>
             </AppBar>
+            <Outlet />
         </Box>
     )
 }
