@@ -18,7 +18,7 @@ function TabsMUI() {
         <Box sx={{ width: '100%' }}>
             <AppBar position="fixed">
                 <Container maxWidth={false} disableGutters={true} >
-                    <Toolbar maxWidth={false} disableGutters={false}>
+                    <Toolbar disableGutters={false}>
                         <Typography variant="h6" sx={{ flexGrow: 0.3 }}>Sonjan sarjiscorner</Typography>
                         <Tabs variant="fullWidth" value={value} textColor="inherit" onChange={handleChange}>
                             <Tab label="Etusivu" icon={<HomeIcon />} component={Link} to='/' />
