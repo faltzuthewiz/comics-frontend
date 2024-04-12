@@ -1,4 +1,5 @@
 import Image from "./Image"
+import { Box, Button, Grid, FormControl, FormControlLabel, InputLabel, MenuItem, Paper, Select, Switch, TextField, Typography } from "@mui/material";
 
 function ComicDetails({ comic }) {
 
@@ -7,24 +8,31 @@ function ComicDetails({ comic }) {
     }
 
     return (
-        <div>
-            <h2>Sarjakuvan {comic[0].name} tiedot</h2>
-            <Image image={comic[0].image} />
-            <p>{comic[0].name} {comic[0].additionalName}</p>
-            <p>Käännösteos: {String(comic[0].translation)}</p>
-            <p>Alkuperäinen nimi: {comic[0].originalName}</p>
-            <p>Sarjakuvan kieli: {comic[0].language}</p>
-            <p>Kirjoittaja: {comic[0].writer}, piirtäjä: {comic[0].artist}</p>
-            <p>Omakustannejulkaisu: {String(comic[0].selfPublished)}</p>
-            <p>Julkaisija: {comic[0].publisher}</p>
-            <p>ISBN: {comic[0].ISBN}</p>
-            <p>Sivumäärä: {comic[0].pages}</p>
-            <p>Julkaisuvuosi: {comic[0].publicationYear}, luettu: {formatDate(comic[0].dateRead)}</p>
-            <h3>Kuvaus</h3>
-            <p>{comic[0].details}</p>
-            <h3>Omat kommentit sarjakuvasta</h3>
-            <p>{comic[0].ownThoughts}</p>
-        </div>
+        <Box>
+            <Typography variant="h2">Sarjakuvan {comic[0].name} tiedot</Typography>
+            <Grid container spacing={2}>
+                <Grid item xs={4}>
+                    <Image image={comic[0].image} />
+                </Grid>
+                <Grid item xs={8}>
+                    <Typography>{comic[0].name} {comic[0].additionalName}</Typography>
+                    <Typography>Käännösteos: {String(comic[0].translation)}</Typography>
+                    <Typography>Alkuperäinen nimi: {comic[0].originalName}</Typography>
+                    <Typography>Sarjakuvan kieli: {comic[0].language}</Typography>
+                    <Typography>Kirjoittaja: {comic[0].writer}, piirtäjä: {comic[0].artist}</Typography>
+                    <Typography>Omakustannejulkaisu: {String(comic[0].selfPublished)}</Typography>
+                    <Typography>Julkaisija: {comic[0].publisher}</Typography>
+                    <Typography>ISBN: {comic[0].ISBN}</Typography>
+                    <Typography>Sivumäärä: {comic[0].pages}</Typography>
+                    <Typography>Julkaisuvuosi: {comic[0].publicationYear}</Typography>
+                    <Typography>Luettu: {formatDate(comic[0].dateRead)}</Typography>
+                    <Typography variant="h3">Kuvaus</Typography>
+                    <Typography>{comic[0].details}</Typography>
+                    <Typography variant="h3">Omat kommentit sarjakuvasta</Typography>
+                    <Typography>{comic[0].ownThoughts}</Typography>
+                </Grid>
+            </Grid>
+        </Box>
     )
 }
 

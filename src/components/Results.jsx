@@ -1,5 +1,6 @@
 import ComicsList from "./ComicsList"
 import ComicDetails from "./ComicDetails"
+import { Typography } from "@mui/material"
 
 function Results({ comics, showbtn }) {
     if (comics.length > 1) {
@@ -12,7 +13,7 @@ function Results({ comics, showbtn }) {
         )
     } else if (comics.length === 0) {
         return (
-            <div>Ei hakutuloksia. Kokeile toista hakusanaa.</div>
+            <Typography>Ei hakutuloksia. Kokeile toista hakusanaa.</Typography>
         )
     }
 
