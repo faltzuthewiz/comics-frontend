@@ -1,5 +1,5 @@
 import Image from "./Image"
-import { Box, Button, Grid, FormControl, FormControlLabel, InputLabel, MenuItem, Paper, Select, Switch, TextField, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 
 function ComicDetails({ comic }) {
 
@@ -9,18 +9,60 @@ function ComicDetails({ comic }) {
 
     return (
         <Box>
-            <Typography variant="h2">Sarjakuvan {comic[0].name} tiedot</Typography>
+            <Typography variant="h2">Sarjakuvan "{comic[0].name}" tiedot</Typography>
             <Grid container spacing={2}>
                 <Grid item xs={4}>
                     <Image image={comic[0].image} />
                 </Grid>
                 <Grid item xs={8}>
-                    <Typography>{comic[0].name} {comic[0].additionalName}</Typography>
-                    <Typography>Käännösteos: {String(comic[0].translation)}</Typography>
-                    <Typography>Alkuperäinen nimi: {comic[0].originalName}</Typography>
-                    <Typography>Sarjakuvan kieli: {comic[0].language}</Typography>
-                    <Typography>Kirjoittaja: {comic[0].writer}, piirtäjä: {comic[0].artist}</Typography>
-                    <Typography>Omakustannejulkaisu: {String(comic[0].selfPublished)}</Typography>
+                    {comic[0].additionalName !== "" && (
+                        <Typography>Koko nimi: {comic[0].name} : {comic[0].additionalName}</Typography>)}
+                    {comic[0].additionalName == "" &&
+                        <Typography>Koko nimi: {comic[0].name}</Typography>}
+                    {comic[0].translation === true && (
+                        <Typography>Käännösteos: kyllä</Typography>
+                    )}
+                    {comic[0].translation === false && (
+                        <Typography>Käännösteos: ei</Typography>
+                    )}
+                    {comic[0].originalName !== "" && (
+                        <Typography>Alkuperäinen nimi: {comic[0].originalName}</Typography>)}
+                    {comic[0].language == "Finnish" && (
+                        <Typography>Sarjakuvan kieli:
+                            suomi</Typography>
+                    )}
+                    {comic[0].language == "English" && (
+                        <Typography>Sarjakuvan kieli:
+                            englanti</Typography>
+                    )}
+                    {comic[0].language == "Swedish" && (
+                        <Typography>Sarjakuvan kieli:
+                            ruotsi</Typography>
+                    )}
+                    {comic[0].language == "German" && (
+                        <Typography>Sarjakuvan kieli:
+                            saksa</Typography>
+                    )}
+                    {comic[0].language == "Danish" && (
+                        <Typography>Sarjakuvan kieli:
+                            tanska</Typography>
+                    )}
+                    {comic[0].language == "Other" && (
+                        <Typography>Sarjakuvan kieli:
+                            muu</Typography>
+                    )}
+                    {comic[0].language == null || comic[0].language == "" && (
+                        <Typography>Sarjakuvan kieli:
+                            ei saatavilla</Typography>
+                    )}
+                    <Typography>Kirjoittaja: {comic[0].writer}</Typography>
+                    <Typography>Piirtäjä: {comic[0].artist}</Typography>
+                    {comic[0].selfPublished === true && (
+                        <Typography>Omakustannejulkaisu: kyllä</Typography>
+                    )}
+                    {comic[0].selfPublished === false && (
+                        <Typography>Omakustannejulkaisu: ei</Typography>
+                    )}
                     <Typography>Julkaisija: {comic[0].publisher}</Typography>
                     <Typography>ISBN: {comic[0].ISBN}</Typography>
                     <Typography>Sivumäärä: {comic[0].pages}</Typography>

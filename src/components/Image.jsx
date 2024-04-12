@@ -1,12 +1,14 @@
+import { Box, Typography } from "@mui/material";
+
 function Image({ image }) {
 
     if (image === undefined || image === "") {
         return (
-            <div style={{ height: "150px", width: "120px", backgroundColor: "lightblue" }}>Ei saatavilla olevaa kuvaa</div>
+            <Box sx={{ height: "400px", width: "320px", backgroundColor: "grey.300", display: "flex", alignItems: "center", justifyContent: "center" }}><Typography >Ei saatavilla olevaa kuvaa</Typography></Box>
         )
     } else {
         return (
-            <img src={"/src/images/" + image} alt="sarjakuvan kansikuva" style={{ width: "120px" }} />
+            <Box component="img" src={"/src/images/" + image} alt="sarjakuvan kansikuva" sx={{ maxWidth: "320px" }} />
         )
     }
 }
