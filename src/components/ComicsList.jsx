@@ -8,34 +8,39 @@ function ComicsList({ comics, showbtn }) {
 
     return (
         <>
-            <Typography variant="h2">Sarjakuvalista</Typography>
-            <Grid container spacing={2} >
-                {
-                    comics.map(comic => {
-                        return (
-                            <Grid item key={comic.id} xs={10} >
-                                <Card sx={{ display: "flex" }}>
-                                    {
-                                        comic.image !== "" ?
-                                            <CardMedia sx={{ height: 220, width: 230, }} component="img" image={`src/images/${comic.image}`} alt="Sarjakuvan kansikuva" />
-                                            : <CardContent sx={{ textAlign: "center", height: 220, width: 200, backgroundColor: "grey.300" }}><Typography >Ei kuvaa</Typography></CardContent>
-                                    }
-                                    <CardContent sx={{ flexGrow: 8 }}>
-                                        <CardHeader title={`${comic.name} ${comic.additionalName}`} />
-                                        <Typography>Kirjoittaja: {comic.writer}</Typography>
-                                        <Typography>Piirtäjä: {comic.artist}</Typography>
-                                        <Typography>Julkaisuvuosi: {comic.publicationYear}</Typography>
-                                        <Typography>Luettu: {formatDate(comic.dateRead)}</Typography>
-                                    </CardContent>
-                                    <CardActions sx={{}}>
-                                        <Button color="primary" onClick={() => showbtn(comic.id)}>Näytä lisätietoja</Button>
-                                    </CardActions>
-                                </Card>
-                            </Grid>
-                        )
-                    })
-                }
-            </Grid>
+            <Box sx={{ marginTop: "40px", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
+                <Typography variant="h2">Sarjakuvalista</Typography>
+                <Box sx={{ marginLeft: "10%", marginBottom: "90px" }}>
+                    <Grid container spacing={2} >
+                        {
+                            comics.map(comic => {
+                                return (
+                                    <Grid item key={comic.id} xs={10} >
+                                        <Card sx={{ display: "flex" }}>
+                                            {
+                                                comic.image !== "" ?
+                                                    <CardMedia sx={{ height: 220, width: 230, }} component="img" image={`src/images/${comic.image}`} alt="Sarjakuvan kansikuva" />
+                                                    : <CardContent sx={{ textAlign: "center", height: 220, width: 200, backgroundColor: "grey.300" }}><Typography >Ei kuvaa</Typography></CardContent>
+                                            }
+                                            <CardContent sx={{ flexGrow: 8 }}>
+                                                <CardHeader title={`${comic.name} ${comic.additionalName}`} />
+                                                <Typography>Kirjoittaja: {comic.writer}</Typography>
+                                                <Typography>Piirtäjä: {comic.artist}</Typography>
+                                                <Typography>Julkaisuvuosi: {comic.publicationYear}</Typography>
+                                                <Typography>Luettu: {formatDate(comic.dateRead)}</Typography>
+                                            </CardContent>
+                                            <CardActions sx={{}}>
+                                                <Button color="primary" onClick={() => showbtn(comic.id)}>Näytä lisätietoja</Button>
+                                            </CardActions>
+                                        </Card>
+                                    </Grid>
+                                )
+                            })
+                        }
+                    </Grid>
+                    <Typography>Hakutulokset päättyivät.</Typography>
+                </Box>
+            </Box >
         </>
     )
 }

@@ -8,7 +8,7 @@ function ComicDetails({ comic }) {
     }
 
     return (
-        <Box>
+        <Box sx={{ marginLeft: "2%", marginRight: "2%" }}>
             <Typography variant="h2">Sarjakuvan "{comic[0].name}" tiedot</Typography>
             <Grid container spacing={2}>
                 <Grid item xs={4}>

@@ -110,7 +110,7 @@ function AddComicForm({ comicsList }) {
     }
 
     return (
-        <Paper sx={{ maxWidth: 1200, marginTop: "120px" }}>
+        <Paper sx={{ maxWidth: 1200, marginTop: "120px", marginLeft: "10%", marginBottom: "40px" }}>
             <Typography variant="h2">Lisää uusi sarjakuva</Typography>
 
             <Box component='form' autoComplete='off' sx={{ '& .MuiTextField-root': { marginBottom: 2 } }}>
