@@ -1,7 +1,7 @@
 import Image from "./Image"
 import { Box, Button, Grid, Typography } from "@mui/material";
 
-function ComicDetails({ comic }) {
+function ComicDetails({ comic, onChange, value }) {
 
     function formatDate(string) {
         return new Date(string).toLocaleDateString('fi-FI', { day: '2-digit', month: '2-digit', year: 'numeric' });
@@ -9,6 +9,7 @@ function ComicDetails({ comic }) {
 
     return (
         <Box sx={{ marginLeft: "2%", marginRight: "2%" }}>
+            <Button variant="contained" color="secondary" onClick={onChange} value={value}>Palaa takaisin listaan</Button>
             <Typography variant="h2">Sarjakuvan "{comic[0].name}" tiedot</Typography>
             <Grid container spacing={2}>
                 <Grid item xs={4}>

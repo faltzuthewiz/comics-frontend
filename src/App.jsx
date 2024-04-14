@@ -5,11 +5,25 @@ import ListPage from "./ListPage"
 import Introduction from "./components/Introduction"
 import Results from "./components/Results"
 import TabsMUI from "./muinavi/TabsMUI"
-import { Box } from "@mui/material"
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Box, CssBaseline } from "@mui/material"
+import { createBrowserRouter, RouterProvider, useRouteError, isRouteErrorResponse, Link } from "react-router-dom";
 import InfoPage from "./components/InfoPage"
 import { ThemeProvider, createTheme } from "@mui/material"
-import { red, blue, green, yellow, lightBlue, deepPurple, teal } from '@mui/material/colors'
+import { red, blue, green, yellow, lightBlue, deepPurple, teal, grey } from '@mui/material/colors'
+
+export function Error() {
+  let error = useRouteError()
+  if (isRouteErrorResponse(error)) {
+    return (
+      <Box>
+        {error.status} {error.data}
+        <Link to='/'>Etusivulle</Link>
+      </Box>
+    )
+  }
+  return (<Box>{error.message} <Link to='/'>Etusivulle</Link></Box>)
+
+}
 
 const comicsList = [
   {
@@ -93,7 +107,7 @@ const comicsList = [
 const theme = createTheme({
   palette: {
     primary: { main: deepPurple[800], contrastText: '#FFFFFF' },
-    secondary: { main: teal['A400'], contrastText: '#FFFFFF' },
+    secondary: { main: teal['A400'], contrastText: grey[900] },
     //text: { primary: lightBlue[500], secondary: lightBlue[800] },
   }, // Värimaailma
   typography: {
@@ -107,6 +121,7 @@ const theme = createTheme({
 const router = createBrowserRouter([
   {
     element: <TabsMUI></TabsMUI>,
+    errorElement: <Error />,
     children: [
       {
         path: '/',
@@ -218,11 +233,9 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <RouterProvider router={router} />
         <Box>
-          {/*    <Filter onChange={handleFilter} value={filterName} />
-        <Results comics={comicsToShow} showbtn={handleShowButton} />
-  <AddComicForm change={change} changeCheck={changeCheck} changeDate={changeDate} addComic={addComic} comic={comic} /> */}
+          <CssBaseline />
+          <RouterProvider router={router} />
         </Box>
       </ThemeProvider>
     </>

@@ -35,7 +35,7 @@ function ListPage({ comicsList }) {
     return (
         <Box sx={{ marginTop: "100px" }}>
             <Filter onChange={handleFilter} value={filterName} />
-            <Results comics={comicsToShow} showbtn={handleShowButton} />
+            <Results comics={comicsToShow} showbtn={handleShowButton} onChange={handleFilter} value={filterName} />
         </Box>
     )
 }
