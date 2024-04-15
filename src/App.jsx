@@ -28,41 +28,41 @@ export function Error() {
 const comicsList = [
   {
     id: 1,
-    name: "Test comic 1",
-    additionalName: "",
-    translation: false,
-    originalName: "",
-    artist: "Pii Rtäjä",
-    writer: "Teppo Testaaja",
-    details: "This is the test book",
-    pages: "200",
-    publicationYear: 2020,
-    ISBN: "1234567891234",
+    name: "Economix",
+    additionalName: "Kuinka talous toimii (ja ei toimi)",
+    translation: true,
+    originalName: "Economix : how and why our economy works (and doesn't work)",
+    artist: "Dan E. Burr",
+    writer: "Michael Goodwin",
+    details: "Raha puhuu - ja paljastaa meille salansa! Talouspuhetta tulee joka tuutista, mutta kuinka voimme arvioida sen laatua? Kuinka me kansalaiset voimme hahmottaa, mitä finanssiammattilaiset tai päättäjät tietävät - tai väittävät tietävänsä?",
+    pages: "304",
+    publicationYear: 2017,
+    ISBN: "9789527192030",
     selfPublished: false,
-    publisher: "Jalava",
-    language: "English",
-    dateRead: "2.12.2024", // English formatting
-    image: "",
-    ownThoughts: "ye ye ye",
+    publisher: "Kampus Kustannus",
+    language: "Finnish",
+    dateRead: "5.18.2020", // English formatting
+    image: "Economix_GoodwinM.jpg",
+    ownThoughts: "Luin sarjakuvan peräti neljä vuotta sitten, joten en muista siitä paljoakaan. Muistan kuitenkin, että tämä talousaiheinen sarjakuva oli mielenkiintoinen ja silmiä avaava kokemus. Itse asiassa Economixin lukemisen jälkeen aloin sijoittamaan.",
   },
   {
     id: 2,
-    name: "Test comic 2",
-    additionalName: "The revenge of the test comics",
-    translation: false,
-    originalName: "Testisarjakuva 2",
-    artist: "Pii Rtäjä",
-    writer: "Teppo Testaaja",
-    details: "This is the test book number 2",
-    pages: "300",
-    publicationYear: 2006,
-    ISBN: "1234567895555",
-    selfPublished: true,
-    publisher: "",
+    name: "Super Mario Adventures",
+    additionalName: "",
+    translation: true,
+    originalName: "Super Mario Adventures Mario no daiboken",
+    artist: "Charlie Nozawa",
+    writer: "Kentaro Takekuma",
+    details: "'Super Mario Adventures', inspired by the best-selling Super Mario video game franchise, is a collection of comics that originally ran in 'Nintendo Power Magazine'. The peril-plagued Princess Toadstool is kidnapped by the diabolical deadbeat Bowser, but super plumbers Mario and Luigi hatch a plan with their friend Yoshi to rescue her. Are the Super Mario Bros' plans a pipe dream? Can they stop the Koopa King before he forces the Princess to be his bride?",
+    pages: "112",
+    publicationYear: 2016,
+    ISBN: "9781421588643",
+    selfPublished: false,
+    publisher: "VIZ Media, LLC",
     language: "English",
-    dateRead: "2.20.2024", // English formatting
-    image: "",
-    ownThoughts: "ye ye ye",
+    dateRead: "1.1.2022", // English formatting
+    image: "super-mario-adventures_TakekumaK.jpg",
+    ownThoughts: "Vähän erikoisempi tapaus oman kodin sarjakuvahyllyssä eli englanninkielinen Super Mario -sarjakuva. Teos on kokoelma jatkotarina-sarjakuvia, jotka ovat julkaistu alun perin Nintendo Power Magazinessa vuosina 92-93. Uudellen selatessa kiinnitin huomiota sarjakuvan runsaaseen huumoriin ja hyvin ilmeikkäisiin hahmoihin.",
   },
   {
     id: 3,
@@ -219,16 +219,8 @@ function App() {
     setComicsList(comicsList.concat(comic))
     setComicsToShow(comicsList.concat(comic))
   }
-  /*
-    const handleShowButton = (id) => {
-      const results = comicsList.filter((comic) => {
-        return (comic.id === id)
-      })
-  
-      setComicsToShow(results)
-    }
-  */
-  console.log(comicsList)
+
+  // console.log(comicsList)
 
   return (
     <>

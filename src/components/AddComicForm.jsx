@@ -31,6 +31,8 @@ function AddComicForm({ comicsList }) {
         ownThoughts: "",
     })
 
+    const [text, setText] = useState("")
+
     const change = (e) => {
         const { name, value, type, checked } = e.target
         const newValue = type === 'checkbox' ? checked : value
@@ -40,7 +42,8 @@ function AddComicForm({ comicsList }) {
             [name]: newValue,
             id: comicsList.length + 1,
         })
-        console.log(comic)
+
+        setText("")
     }
 
     const changeCheck = (e) => {
@@ -49,6 +52,8 @@ function AddComicForm({ comicsList }) {
             [e.target.name]: e.target.checked,
             id: comicsList.length + 1,
         })
+
+        setText("")
     }
 
     const changeDate = (e) => {
@@ -57,6 +62,8 @@ function AddComicForm({ comicsList }) {
             dateRead: e,
             id: comicsList.length + 1,
         })
+
+        setText("")
     }
 
     const changeLanguage = (e) => {
@@ -65,6 +72,8 @@ function AddComicForm({ comicsList }) {
             language: e.target.value,
             id: comicsList.length + 1,
         })
+
+        setText("")
     }
 
     const changeImage = (e) => {
@@ -73,6 +82,8 @@ function AddComicForm({ comicsList }) {
             image: e.target.files[0],
             id: comicsList.length + 1,
         })
+
+        setText("")
     }
 
     let imageName = ''
@@ -84,7 +95,6 @@ function AddComicForm({ comicsList }) {
         e.preventDefault()
 
         comicsList.concat(comic)
-        console.log("Uusi sarjakuva lisätty!")
 
         setComic({
             name: "",
@@ -105,6 +115,7 @@ function AddComicForm({ comicsList }) {
             ownThoughts: "",
         })
 
+        setText("Uusi sarjakuva lisätty!")
         //setComicsList(comicsList.concat(comic))
         //setComicsToShow(comicsList.concat(comic))
     }
@@ -114,7 +125,7 @@ function AddComicForm({ comicsList }) {
             <Typography variant="h2">Lisää uusi sarjakuva</Typography>
 
             <Box component='form' autoComplete='off' sx={{ '& .MuiTextField-root': { marginBottom: 2 } }}>
-                <TextField label='Sarjakuvan nimi' name="name" value={comic.name} onChange={change} fullWidth />
+                <TextField label='Sarjakuvan nimi' name="name" value={comic.name} onChange={change} fullWidth autoFocus />
                 <br />
                 <TextField label='Teoksen lisänimi' name="additionalName" value={comic.additionalName} onChange={change} fullWidth />
                 <br />
@@ -124,8 +135,12 @@ function AddComicForm({ comicsList }) {
                 <br />
                 <FormControlLabel labelPlacement="start" label='Onko teos käännös?' control={<Switch color="primary" checked={comic.translation} onChange={changeCheck} name="translation" />} />
                 <br />
-                <TextField label='Alkuperäinen nimi' name="originalName" value={comic.originalName} onChange={change} fullWidth />
-                <br />
+                {comic.translation == true && (
+                    <>
+                        <TextField label='Alkuperäinen nimi' name="originalName" value={comic.originalName} onChange={change} fullWidth />
+                        <br />
+                    </>
+                )}
                 <TextField label='Kuvaus' name="details" value={comic.details} onChange={change} multiline rows='4' fullWidth />
                 <br />
                 <TextField label='Sivumäärä' name="pages" value={comic.pages} onChange={change} fullWidth />
@@ -136,8 +151,12 @@ function AddComicForm({ comicsList }) {
                 <br />
                 <FormControlLabel labelPlacement="start" label='Onko teos omakustanne?' control={<Switch color="primary" checked={comic.selfPublished} onChange={changeCheck} name="selfPublished" />} />
                 <br />
-                <TextField label='Julkaisija' name="publisher" value={comic.publisher} onChange={change} fullWidth />
-                <br />
+                {comic.selfPublished == true && (
+                    <>
+                        <TextField label='Julkaisija' name="publisher" value={comic.publisher} onChange={change} fullWidth />
+                        <br />
+                    </>
+                )}
                 <FormControl fullWidth>
                     <InputLabel id="language-label">Kieli</InputLabel>
                     <Select
@@ -169,6 +188,8 @@ function AddComicForm({ comicsList }) {
                     <Typography sx={{ display: "inline" }}>{imageName}</Typography>
                 </InputLabel>
                 <Button variant="contained" onClick={addComic}>Tallenna</Button>
+
+                <Typography>{text}</Typography>
             </Box>
         </Paper>
     )
