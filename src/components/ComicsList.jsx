@@ -23,7 +23,11 @@ function ComicsList({ comics, showbtn }) {
                                                     : <CardContent sx={{ textAlign: "center", height: 220, width: 200, backgroundColor: "grey.300" }}><Typography >Ei kuvaa</Typography></CardContent>
                                             }
                                             <CardContent sx={{ flexGrow: 8 }}>
-                                                <CardHeader title={`${comic.name} ${comic.additionalName}`} />
+                                                {
+                                                    comic.additionalName !== "" ?
+                                                        <CardHeader title={`${comic.name} : ${comic.additionalName}`} />
+                                                        : <CardHeader title={`${comic.name}`} />
+                                                }
                                                 <Typography>Kirjoittaja: {comic.writer}</Typography>
                                                 <Typography>Piirtäjä: {comic.artist}</Typography>
                                                 <Typography>Julkaisuvuosi: {comic.publicationYear}</Typography>
