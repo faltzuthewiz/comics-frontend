@@ -1,5 +1,5 @@
-import Filter from "./components/Filter"
-import Results from "./components/Results"
+import Filter from "./Filter"
+import Results from "./Results"
 import { useState } from "react"
 
 import { Box } from "@mui/material"

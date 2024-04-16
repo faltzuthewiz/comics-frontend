@@ -1,7 +1,7 @@
 import { useState } from "react"
 import AddComicForm from "./components/AddComicForm"
 import Filter from "./components/Filter"
-import ListPage from "./ListPage"
+import ListPage from "./components/ListPage"
 import Introduction from "./components/Introduction"
 import Results from "./components/Results"
 import TabsMUI from "./muinavi/TabsMUI"
