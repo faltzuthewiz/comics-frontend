@@ -125,13 +125,13 @@ function AddComicForm({ comicsList }) {
             <Typography variant="h2">Lisää uusi sarjakuva</Typography>
 
             <Box component='form' autoComplete='off' sx={{ '& .MuiTextField-root': { marginBottom: 2 } }}>
-                <TextField label='Sarjakuvan nimi' name="name" value={comic.name} onChange={change} fullWidth autoFocus />
+                <TextField label='Sarjakuvan nimi' name="name" value={comic.name} onChange={change} fullWidth autoFocus required />
                 <br />
                 <TextField label='Teoksen lisänimi' name="additionalName" value={comic.additionalName} onChange={change} fullWidth />
                 <br />
-                <TextField label='Piirtäjä' name="artist" value={comic.artist} onChange={change} fullWidth />
+                <TextField label='Piirtäjä' name="artist" value={comic.artist} onChange={change} fullWidth required />
                 <br />
-                <TextField label='Käsikirjoittaja' name="writer" value={comic.writer} onChange={change} fullWidth />
+                <TextField label='Käsikirjoittaja' name="writer" value={comic.writer} onChange={change} fullWidth required />
                 <br />
                 <FormControlLabel labelPlacement="start" label='Onko teos käännös?' control={<Switch color="primary" checked={comic.translation} onChange={changeCheck} name="translation" />} />
                 <br />
@@ -141,11 +141,11 @@ function AddComicForm({ comicsList }) {
                         <br />
                     </>
                 )}
-                <TextField label='Kuvaus' name="details" value={comic.details} onChange={change} multiline rows='4' fullWidth />
+                <TextField label='Kuvaus' name="details" value={comic.details} onChange={change} multiline rows='4' fullWidth required />
                 <br />
-                <TextField label='Sivumäärä' name="pages" value={comic.pages} onChange={change} fullWidth />
+                <TextField label='Sivumäärä' name="pages" value={comic.pages} onChange={change} fullWidth required />
                 <br />
-                <TextField label='Julkaisuvuosi' name="publicationYear" value={comic.publicationYear} onChange={change} fullWidth />
+                <TextField label='Julkaisuvuosi' name="publicationYear" value={comic.publicationYear} onChange={change} fullWidth required />
                 <br />
                 <TextField label='ISBN' name="ISBN" value={comic.ISBN} onChange={change} fullWidth />
                 <br />
@@ -153,7 +153,7 @@ function AddComicForm({ comicsList }) {
                 <br />
                 {comic.selfPublished == false && (
                     <>
-                        <TextField label='Julkaisija' name="publisher" value={comic.publisher} onChange={change} fullWidth />
+                        <TextField label='Julkaisija' name="publisher" value={comic.publisher} onChange={change} fullWidth required />
                         <br />
                     </>
                 )}
@@ -177,7 +177,7 @@ function AddComicForm({ comicsList }) {
                 <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={fi}>
                     <DesktopDatePicker sx={{ width: '100%' }} onChange={changeDate} name="dateRead" value={comic.dateRead} />
                 </LocalizationProvider>
-                <TextField label='Omat ajatukset' name="ownThoughts" value={comic.ownThoughts} onChange={change} multiline rows='4' fullWidth />
+                <TextField label='Omat ajatukset' name="ownThoughts" value={comic.ownThoughts} onChange={change} multiline rows='4' fullWidth required />
                 <br />
                 <input accept="image/*" name="image" id="image" type="file" onChange={changeImage} hidden />
                 <InputLabel htmlFor="image">
