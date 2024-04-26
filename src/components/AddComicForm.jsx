@@ -151,7 +151,7 @@ function AddComicForm({ comicsList }) {
                 <br />
                 <FormControlLabel labelPlacement="start" label='Onko teos omakustanne?' control={<Switch color="primary" checked={comic.selfPublished} onChange={changeCheck} name="selfPublished" />} />
                 <br />
-                {comic.selfPublished == true && (
+                {comic.selfPublished == false && (
                     <>
                         <TextField label='Julkaisija' name="publisher" value={comic.publisher} onChange={change} fullWidth />
                         <br />
