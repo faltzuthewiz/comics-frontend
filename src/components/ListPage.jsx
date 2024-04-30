@@ -1,31 +1,48 @@
-import Filter from "./Filter"
-import Results from "./Results"
-import { useState } from "react"
+import Filter from "./Filter";
+import Results from "./Results";
+import { useState } from "react";
+import { useEffect } from "react";
+import { getComics } from "./comics";
 
 import { Box } from "@mui/material"
 
-function ListPage({ comicsList }) {
+function ListPage() {
 
     const [filterName, setFilterName] = useState('')
 
-    const [comicsToShow, setComicsToShow] = useState(comicsList)
+    const [comics, setComics] = useState([])
+    const [comicsToShow, setComicsToShow] = useState(comics)
+
+    const getAllComics = async () => {
+        try {
+            const response = await getComics()
+            setComics(response.data)
+            setComicsToShow(response.data)
+        } catch (error) {
+            setComics([])
+        }
+    }
+
+    useEffect(() => {
+        getAllComics()
+    }, [])
 
     const handleFilter = (e) => {
         const keyword = e.target.value
 
         if (keyword !== '') {
-            const results = comicsList.filter((comic) => {
+            const results = comics.filter((comic) => {
                 return comic.name.toLowerCase().includes(keyword.toLowerCase())
             })
             setComicsToShow(results)
         } else {
-            setComicsToShow(comicsList)
+            setComicsToShow(comics)
         }
         setFilterName(keyword)
     }
 
     const handleShowButton = (id) => {
-        const results = comicsList.filter((comic) => {
+        const results = comics.filter((comic) => {
             return (comic.id === id)
         })
 
