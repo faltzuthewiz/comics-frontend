@@ -9,8 +9,11 @@ import fi from 'date-fns/locale/fi';
 import { DesktopDatePicker } from "@mui/x-date-pickers";
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 
+import { addComic } from "./comics";
 
-function AddComicForm({ comicsList }) {
+
+//function AddComicForm({ comicsList }) {
+function AddComicForm() {
 
     const [comic, setComic] = useState({
         name: "",
@@ -40,7 +43,7 @@ function AddComicForm({ comicsList }) {
         setComic({
             ...comic,
             [name]: newValue,
-            id: comicsList.length + 1,
+            // id: comicsList.length + 1,
         })
 
         setText("")
@@ -50,7 +53,7 @@ function AddComicForm({ comicsList }) {
         setComic({
             ...comic,
             [e.target.name]: e.target.checked,
-            id: comicsList.length + 1,
+            // id: comicsList.length + 1,
         })
 
         setText("")
@@ -60,7 +63,7 @@ function AddComicForm({ comicsList }) {
         setComic({
             ...comic,
             dateRead: e,
-            id: comicsList.length + 1,
+            //  id: comicsList.length + 1,
         })
 
         setText("")
@@ -70,7 +73,7 @@ function AddComicForm({ comicsList }) {
         setComic({
             ...comic,
             language: e.target.value,
-            id: comicsList.length + 1,
+            //  id: comicsList.length + 1,
         })
 
         setText("")
@@ -80,7 +83,7 @@ function AddComicForm({ comicsList }) {
         setComic({
             ...comic,
             image: e.target.files[0],
-            id: comicsList.length + 1,
+            //  id: comicsList.length + 1,
         })
 
         setText("")
@@ -91,34 +94,57 @@ function AddComicForm({ comicsList }) {
         imageName = comic.image.name
     }
 
-    const addComic = (e) => {
-        e.preventDefault()
+    const addNewComic = async () => {
 
-        comicsList.concat(comic)
+        const formData = new FormData()
+        console.log(formData)
+        formData.append('name', comic.name)
+        formData.append('additionalName', comic.additionalName)
+        formData.append('translation', comic.translation)
+        formData.append('originalName', comic.originalName)
+        //console.log(comic.originalName)
+        formData.append('artist', comic.artist)
+        formData.append('writer', comic.writer)
+        formData.append('details', comic.details)
+        formData.append('pages', comic.pages)
+        formData.append('publicationYear', comic.publicationYear)
+        formData.append('ISBN', comic.ISBN)
+        formData.append('selfPublished', comic.selfPublished)
+        formData.append('publisher', comic.publisher)
+        formData.append('language', comic.language)
 
-        setComic({
-            name: "",
-            additionalName: "",
-            translation: false,
-            originalName: "",
-            artist: "",
-            writer: "",
-            details: "",
-            pages: "",
-            publicationYear: 1900,
-            ISBN: "",
-            selfPublished: false,
-            publisher: "",
-            language: "Finnish",
-            dateRead: new Date(),
-            image: "",
-            ownThoughts: "",
-        })
+        let date = comic.dateRead.getFullYear() + "-" + (comic.dateRead.getMonth() + 1) + "-" + comic.dateRead.getDate()
+        formData.append('dateRead', date)
+        formData.append('image', comic.image)
+        formData.append('ownThoughts', comic.ownThoughts)
 
-        setText("Uusi sarjakuva lisätty!")
-        //setComicsList(comicsList.concat(comic))
-        //setComicsToShow(comicsList.concat(comic))
+        try {
+            const response = await addComic(formData)
+            setComic({
+                name: "",
+                additionalName: "",
+                translation: false,
+                originalName: "",
+                artist: "",
+                writer: "",
+                details: "",
+                pages: "",
+                publicationYear: 1900,
+                ISBN: "",
+                selfPublished: false,
+                publisher: "",
+                language: "Finnish",
+                dateRead: new Date(),
+                image: "",
+                ownThoughts: "",
+            })
+            setText('Uusi sarjakuva lisätty!')
+        } catch (error) {
+            setText('Uuden sarjakuvan lisääminen ei onnistunut!')
+        }
     }
+
+    console.log(comic)
 
     return (
         <Paper sx={{ maxWidth: 1200, marginTop: "120px", marginLeft: "10%", marginBottom: "40px" }}>
@@ -187,7 +213,7 @@ function AddComicForm({ comicsList }) {
                     </Button>
                     <Typography sx={{ display: "inline" }}>{imageName}</Typography>
                 </InputLabel>
-                <Button variant="contained" onClick={addComic}>Tallenna</Button>
+                <Button variant="contained" onClick={addNewComic}>Tallenna</Button>
 
                 <Typography>{text}</Typography>
             </Box>

@@ -58,13 +58,15 @@ function ComicDetails({ comic, onChange, value }) {
                     )}
                     <Typography>Kirjoittaja: {comic[0].writer}</Typography>
                     <Typography>Piirtäjä: {comic[0].artist}</Typography>
-                    {comic[0].selfPublished === true && (
+                    {comic[0].selfPublished === true || comic[0].selfPublished === "true" && (
                         <Typography>Omakustannejulkaisu: kyllä</Typography>
                     )}
-                    {comic[0].selfPublished === false && (
-                        <Typography>Omakustannejulkaisu: ei</Typography>
+                    {comic[0].selfPublished === false || comic[0].selfPublished === "false" && (
+                        <>
+                            <Typography>Omakustannejulkaisu: ei</Typography>
+                            <Typography>Julkaisija: {comic[0].publisher}</Typography>
+                        </>
                     )}
-                    <Typography>Julkaisija: {comic[0].publisher}</Typography>
                     <Typography>ISBN: {comic[0].ISBN}</Typography>
                     <Typography>Sivumäärä: {comic[0].pages}</Typography>
                     <Typography>Julkaisuvuosi: {comic[0].publicationYear}</Typography>

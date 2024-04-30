@@ -1,13 +1,8 @@
 import { Box, Button, Card, CardActions, CardContent, CardHeader, CardMedia, Grid, Typography } from "@mui/material"
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useEffect, useState } from "react";
-import { getComics } from "./comics";
 
 function ComicsList({ comics, showbtn }) {
-    //function ComicsList({ showbtn }) {
-
-
 
     function formatDate(string) {
         return new Date(string).toLocaleDateString('fi-FI', { day: '2-digit', month: '2-digit', year: 'numeric' });
