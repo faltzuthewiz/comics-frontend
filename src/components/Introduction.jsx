@@ -1,5 +1,6 @@
 import { Box, Button, Typography } from "@mui/material"
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
+import ImageCarousel from "./ImageCarousel";
 
 function Introduction() {
     return (
@@ -11,6 +12,7 @@ function Introduction() {
                     <Button variant="contained" color="secondary" sx={{ margin: "10px" }} component={Link} to='listaa'>Selaa sarjakuvia</Button>
                     <Button variant="contained" color="secondary" sx={{ margin: "10px" }} component={Link} to='info'>Lue tietoa sivustosta</Button>
                 </Box>
+                <ImageCarousel />
             </Box >
         </>
     )
