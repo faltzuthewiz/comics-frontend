@@ -105,7 +105,7 @@ app.post('/comics/add', upload.single('image'), (req, res) => {
         imageName = req.file.originalname;
     }
 
-    db.run('INSERT INTO comics (name, additionalName, translation, originalName, artist, writer, details, pages, publicationYear, ISBN, selfPublished, publisher, language, dateRead, image, ownThoughts) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [comic.name, comic.additionalName, comic.translation, comic.originalname, comic.artist, comic.writer, comic.details, comic.pages, comic.publicationYear, comic.ISBN, comic.selfPublished, comic.publisher, comic.language, comic.dateRead, comic.image, comic.ownThoughts], (error) => {
+    db.run('INSERT INTO comics (name, additionalName, translation, originalName, artist, writer, details, pages, publicationYear, ISBN, selfPublished, publisher, language, dateRead, image, ownThoughts) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [comic.name, comic.additionalName, comic.translation, comic.originalName, comic.artist, comic.writer, comic.details, comic.pages, comic.publicationYear, comic.ISBN, comic.selfPublished, comic.publisher, comic.language, comic.dateRead, imageName, comic.ownThoughts], (error) => {
         if (error) {
             console.log(error.message);
             return res.status(400).json({ message: error.message });

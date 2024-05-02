@@ -12,7 +12,6 @@ import FileUploadIcon from '@mui/icons-material/FileUpload';
 import { addComic } from "./comics";
 
 
-//function AddComicForm({ comicsList }) {
 function AddComicForm() {
 
     const [comic, setComic] = useState({
@@ -95,14 +94,11 @@ function AddComicForm() {
     }
 
     const addNewComic = async () => {
-
         const formData = new FormData()
-        console.log(formData)
         formData.append('name', comic.name)
         formData.append('additionalName', comic.additionalName)
         formData.append('translation', comic.translation)
         formData.append('originalName', comic.originalName)
-        //console.log(comic.originalName)
         formData.append('artist', comic.artist)
         formData.append('writer', comic.writer)
         formData.append('details', comic.details)
@@ -143,8 +139,6 @@ function AddComicForm() {
             setText('Uuden sarjakuvan lisääminen ei onnistunut!')
         }
     }
-
-    console.log(comic)
 
     return (
         <Paper sx={{ maxWidth: 1200, marginTop: "120px", marginLeft: "10%", marginBottom: "40px" }}>

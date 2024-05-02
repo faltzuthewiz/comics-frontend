@@ -49,8 +49,6 @@ function ListPage() {
         setComicsToShow(results)
     }
 
-    console.log(comics)
-
     return (
         <Box sx={{ marginTop: "100px" }}>
             <Filter onChange={handleFilter} value={filterName} />
