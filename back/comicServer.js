@@ -124,3 +124,24 @@ app.get('/download/:name', (req, res) => {
 app.get('*', (req, res) => {
     return res.status(404).json({ message: 'No requested service' });
 });
+
+app.put('/comics/edit/:id', upload.single('image'), (req, res) => {
+    let id = req.params.id;
+    let comic = req.body;
+
+    let imageName = null;
+
+    if (req.file) {
+        imageName = req.file.originalname;
+    }
+
+    db.run('UPDATE comics SET name=?, additionalName=?, translation=?, originalName=?, artist=?, writer=?, details=?, pages=?, publicationYear=?, ISBN=?, selfPublished=?, publisher=?, language=?, dateRead=?, image=?, ownThoughts=? WHERE id=?',
+        [comic.name, comic.additionalName, comic.translation, comic.originalName, comic.artist, comic.writer, comic.details, comic.pages, comic.publicationYear, comic.ISBN, comic.selfPublished, comic.publisher, comic.language, comic.dateRead, imageName, comic.ownThoughts, id], (error) => {
+            if (error) {
+                console.log(error.message);
+                return res.status(400).json({ message: error.message });
+            }
+
+            return res.status(200).json({ count: 1 });
+        });
+})

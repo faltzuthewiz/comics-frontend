@@ -2,7 +2,7 @@ import Filter from "./Filter";
 import Results from "./Results";
 import { useState } from "react";
 import { useEffect } from "react";
-import { getComics } from "./comics";
+import { deleteComic, getComics } from "./comics";
 
 import { Box } from "@mui/material"
 
@@ -49,10 +49,19 @@ function ListPage() {
         setComicsToShow(results)
     }
 
+    const handleDelete = (id) => {
+        const comic = comics.find(n => n.id === id)
+        deleteComic(id)
+        setComics(comics.filter((comic) => comic.id !== id))
+        setComicsToShow(comics.filter((comic) => comic.id !== id))
+    }
+
+    //console.log(comics)
+
     return (
         <Box sx={{ marginTop: "100px" }}>
             <Filter onChange={handleFilter} value={filterName} />
-            <Results comics={comicsToShow} showbtn={handleShowButton} onChange={handleFilter} value={filterName} />
+            <Results comics={comicsToShow} showbtn={handleShowButton} onChange={handleFilter} handleDelete={handleDelete} value={filterName} />
         </Box>
     )
 }
