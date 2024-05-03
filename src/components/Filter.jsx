@@ -1,5 +1,6 @@
-import { Box, TextField, Typography } from "@mui/material"
+import { Box, Button, TextField, Typography } from "@mui/material"
 import SearchIcon from '@mui/icons-material/Search';
+import FilterAltOffIcon from '@mui/icons-material/FilterAltOff';
 
 function Filter({ onChange, value }) {
     return (
@@ -9,6 +10,7 @@ function Filter({ onChange, value }) {
                 <Box sx={{ display: "flex", alignItems: "center" }}>
                     <SearchIcon sx={{}} />
                     <TextField id="search-bar" onChange={onChange} label="Suodata sarjakuvia" value={value} />
+                    <Button startIcon={<FilterAltOffIcon />} onClick={onChange} value="" >Tyhjennä filtteri</Button>
                 </Box>
             </form>
         </Box>

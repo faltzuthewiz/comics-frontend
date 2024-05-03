@@ -3,7 +3,7 @@ import { useState } from "react";
 import HomeIcon from '@mui/icons-material/Home';
 import ListIcon from '@mui/icons-material/List';
 import InfoIcon from '@mui/icons-material/Info';
-import CreateIcon from '@mui/icons-material/Create';
+import AddBoxIcon from '@mui/icons-material/AddBox';
 import { Link, Outlet } from "react-router-dom";
 
 function TabsMUI() {
@@ -23,7 +23,7 @@ function TabsMUI() {
                         <Tabs variant="fullWidth" value={value} textColor="inherit" onChange={handleChange}>
                             <Tab label="Etusivu" icon={<HomeIcon />} component={Link} to='/' />
                             <Tab label="Sarjakuvalista" icon={<ListIcon />} component={Link} to='listaa' />
-                            <Tab label="Lisää uusi" icon={<CreateIcon />} component={Link} to='lisaa' />
+                            <Tab label="Lisää uusi" icon={<AddBoxIcon />} component={Link} to='lisaa' />
                             <Tab label="Tietoa sivustosta" icon={<InfoIcon />} component={Link} to='info' />
                         </Tabs>
                     </Toolbar>

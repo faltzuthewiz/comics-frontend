@@ -11,7 +11,6 @@ import FileUploadIcon from '@mui/icons-material/FileUpload';
 
 import { addComic } from "./comics";
 
-
 function AddComicForm() {
 
     const [comic, setComic] = useState({
@@ -140,6 +139,27 @@ function AddComicForm() {
         }
     }
 
+    const emptyChanges = () => {
+        setComic({
+            name: "",
+            additionalName: "",
+            translation: false,
+            originalName: "",
+            artist: "",
+            writer: "",
+            details: "",
+            pages: "",
+            publicationYear: 1900,
+            ISBN: "",
+            selfPublished: false,
+            publisher: "",
+            language: "Finnish",
+            dateRead: new Date(),
+            image: "",
+            ownThoughts: "",
+        })
+    }
+
     return (
         <Paper sx={{ maxWidth: 1200, marginTop: "120px", marginLeft: "10%", marginBottom: "40px" }}>
             <Typography variant="h2">Lisää uusi sarjakuva</Typography>
@@ -153,7 +173,7 @@ function AddComicForm() {
                 <br />
                 <TextField label='Käsikirjoittaja' name="writer" value={comic.writer} onChange={change} fullWidth required />
                 <br />
-                <FormControlLabel labelPlacement="start" label='Onko teos käännös?' control={<Switch color="primary" checked={comic.translation} onChange={changeCheck} name="translation" />} />
+                <FormControlLabel labelPlacement="start" label='Onko teos käännös?' control={<><Typography>Kyllä</Typography><Switch color="primary" checked={comic.translation} onChange={changeCheck} name="translation" /><Typography sx={{ marginLeft: "10px" }}>Ei</Typography></>} />
                 <br />
                 {comic.translation == true && (
                     <>
@@ -169,11 +189,11 @@ function AddComicForm() {
                 <br />
                 <TextField label='ISBN' name="ISBN" value={comic.ISBN} onChange={change} fullWidth />
                 <br />
-                <FormControlLabel labelPlacement="start" label='Onko teos omakustanne?' control={<Switch color="primary" checked={comic.selfPublished} onChange={changeCheck} name="selfPublished" />} />
+                <FormControlLabel labelPlacement="start" label='Onko teos omakustanne?' control={<><Typography>Kyllä</Typography><Switch color="primary" checked={comic.selfPublished} onChange={changeCheck} name="selfPublished" /><Typography sx={{ marginLeft: "10px" }}>Ei</Typography></>} />
                 <br />
                 {comic.selfPublished == false && (
                     <>
-                        <TextField label='Julkaisija' name="publisher" value={comic.publisher} onChange={change} fullWidth required />
+                        <TextField label='Julkaisija' name="publisher" value={comic.publisher} onChange={change} fullWidth />
                         <br />
                     </>
                 )}
@@ -208,6 +228,7 @@ function AddComicForm() {
                     <Typography sx={{ display: "inline" }}>{imageName}</Typography>
                 </InputLabel>
                 <Button variant="contained" onClick={addNewComic}>Tallenna</Button>
+                <Button sx={{ margin: "10px" }} variant="contained" color="warning" onClick={emptyChanges}>Tyhjennä</Button>
 
                 <Typography>{text}</Typography>
             </Box>
