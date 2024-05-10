@@ -8,15 +8,19 @@ import { createBrowserRouter, RouterProvider, useRouteError, isRouteErrorRespons
 import InfoPage from "./components/InfoPage"
 import { ThemeProvider, createTheme } from "@mui/material"
 import { red, blue, green, yellow, lightBlue, deepPurple, teal, grey } from '@mui/material/colors'
+import EditComicForm from "./components/EditComicForm"
 
 export function Error() {
   let error = useRouteError()
   if (isRouteErrorResponse(error)) {
     return (
-      <Box>
-        {error.status} {error.data}
-        <Link to='/'>Etusivulle</Link>
-      </Box>
+      <>
+        <TabsMUI></TabsMUI>,
+        <Box sx={{ marginTop: "70px" }}>
+          {error.status} {error.data}
+          <Link to='/'>Etusivulle</Link>
+        </Box>
+      </>
     )
   }
   return (<Box>{error.message} <Link to='/'>Etusivulle</Link></Box>)
@@ -60,11 +64,18 @@ const router = createBrowserRouter([
         path: '/info',
         element: <InfoPage />
       },
+      {
+        path: 'muokkaa/:id/',
+        element: <EditComicForm />
+      }
+
     ]
   }
 ])
 
 function App() {
+
+  /*
 
   const [comic, setComic] = useState({
     name: "",
@@ -140,7 +151,7 @@ function App() {
     setComicsList(comicsList.concat(comic))
     setComicsToShow(comicsList.concat(comic))
   }
-
+  */
   // console.log(comicsList)
 
   return (

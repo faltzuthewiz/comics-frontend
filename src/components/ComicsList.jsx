@@ -1,8 +1,9 @@
 import { Box, Button, Card, CardActions, CardContent, CardHeader, CardMedia, Grid, Typography } from "@mui/material"
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { Link } from "react-router-dom";
 
-function ComicsList({ comics, showbtn, handleDelete }) {
+function ComicsList({ comics, showbtn, handleDelete, handleEdit }) {
 
     function formatDate(string) {
         return new Date(string).toLocaleDateString('fi-FI', { day: '2-digit', month: '2-digit', year: 'numeric' });
@@ -17,6 +18,7 @@ function ComicsList({ comics, showbtn, handleDelete }) {
                     <Grid container spacing={2} >
                         {
                             comics.map(comic => {
+                                let image = encodeURIComponent(comic.image)
                                 return (
                                     <Grid item key={comic.id} xs={10} >
                                         <Card sx={{ display: "flex" }}>
@@ -38,7 +40,7 @@ function ComicsList({ comics, showbtn, handleDelete }) {
                                             </CardContent>
                                             <CardActions sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                                                 <Button variant="contained" color="primary" onClick={() => showbtn(comic.id)} sx={{ width: "100%", height: "100%" }} >Näytä lisätietoja</Button>
-                                                <Button variant="contained" color="secondary" sx={{ width: "100%", height: "100%" }} ><EditIcon />Muokkaa</Button>
+                                                <Button variant="contained" color="secondary" sx={{ width: "100%", height: "100%" }} component={Link} to={'/muokkaa/' + comic.id} ><EditIcon />Muokkaa</Button>
                                                 <Button variant="contained" color="error" onClick={() => handleDelete(comic.id)} sx={{ width: "100%", height: "100%" }}><DeleteIcon />Poista</Button>
                                             </CardActions>
                                         </Card>

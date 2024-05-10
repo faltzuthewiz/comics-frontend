@@ -2,10 +2,10 @@ import ComicsList from "./ComicsList"
 import ComicDetails from "./ComicDetails"
 import { Typography } from "@mui/material"
 
-function Results({ comics, showbtn, onChange, value, handleDelete }) {
+function Results({ comics, showbtn, onChange, value, handleDelete, handleEdit }) {
     if (comics.length > 1) {
         return (
-            <ComicsList comics={comics} showbtn={showbtn} handleDelete={handleDelete} />
+            <ComicsList comics={comics} showbtn={showbtn} handleDelete={handleDelete} handleEdit={handleEdit} />
         )
     } else if (comics.length === 1) {
         return (

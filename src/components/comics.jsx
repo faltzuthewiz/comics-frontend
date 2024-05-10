@@ -11,6 +11,15 @@ export const getComics = async () => {
     }
 }
 
+export const getOneComic = async (id) => {
+    try {
+        const response = await axios.get(server + '/comics/one/' + id)
+        return (response)
+    } catch (error) {
+        return ({ status: 500, message: 'The search was not successful : ' + error.message })
+    }
+}
+
 export const addComic = async (comic) => {
     try {
         const response = await axios.post(server + '/comics/add', comic, {
