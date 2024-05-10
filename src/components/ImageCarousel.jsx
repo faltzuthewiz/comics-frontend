@@ -4,14 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { getComics } from "./comics";
 
-/*
-const images = [
-    "https://cdn.pixabay.com/photo/2023/10/02/14/51/flowers-8289321_640.png",
-    "https://cdn.pixabay.com/photo/2023/09/10/15/15/flowers-8245210_640.png",
-    "https://cdn.pixabay.com/photo/2023/09/04/17/04/saturn-8233220_640.png"
-];
-
-*/
+import ErrorIcon from '@mui/icons-material/Error';
 
 function groupIntoChunks(array, chunkSize) {
     const output = []
@@ -51,7 +44,12 @@ function ImageCarousel() {
         getAllComics()
     }, [])
 
-    const images = comics.map(({ image }) => image)
+    console.log(comics)
+
+    let images = []
+    if (comics && comics.length > 0) {
+        images = comics.map(({ image }) => image)
+    }
 
     const chunkSize = 3
 
@@ -59,15 +57,24 @@ function ImageCarousel() {
         <Box sx={{ width: "100%", margin: 'auto', mt: 5, backgroundColor: "secondary.main" }}>
             <Carousel animation="fade">
                 {
-                    groupIntoChunks(images, chunkSize).map((group, groupIndex) => (
-                        <Grid container key={groupIndex} sx={{ gap: '20px', justifyContent: 'center', alignItems: 'center', py: '20px', height: '400px' }}>
-                            {group.map((image, i) => (
-                                <Grid item key={i} sx={{ objectFit: "contain", height: "300px" }} >
-                                    <Box component="img" src={'http://localhost:8080/download/' + image} sx={{ width: "100%", height: "360px", objectFit: "contain" }} />
-                                </Grid>
-                            ))}
+                    images.length > 0 ? (
+                        groupIntoChunks(images, chunkSize).map((group, groupIndex) => (
+                            <Grid container key={groupIndex} sx={{ gap: '20px', justifyContent: 'center', alignItems: 'center', py: '20px', height: '400px' }}>
+                                {group.map((image, i) => (
+                                    <Grid item key={i} sx={{ objectFit: "contain", height: "300px" }} >
+                                        <Box component="img" src={'http://localhost:8080/download/' + image} sx={{ width: "100%", height: "360px", objectFit: "contain" }} />
+                                    </Grid>
+                                ))}
+                            </Grid>
+                        ))
+                    ) :
+                        <Grid container sx={{ gap: '20px', justifyContent: 'center', alignItems: 'center', py: '20px', height: '400px' }}>
+                            <Box sx={{ color: "error.main", padding: 2, backgroundColor: "error.main", display: "flex", alignItems: "center" }}>
+                                <ErrorIcon fontSize="large" sx={{ color: "error.contrastText", display: "inline" }} />
+                                <Typography variant="h3" sx={{ color: "error.contrastText", display: "inline", marginLeft: 1 }}>Ei kuvia saatavilla!</Typography>
+                            </Box>
                         </Grid>
-                    ))
+
                 }
             </Carousel>
         </Box>

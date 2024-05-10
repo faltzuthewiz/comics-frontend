@@ -3,7 +3,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from "react-router-dom";
 
-function ComicsList({ comics, showbtn, handleDelete, handleEdit }) {
+function ComicsList({ comics, showbtn, handleDelete }) {
 
     function formatDate(string) {
         return new Date(string).toLocaleDateString('fi-FI', { day: '2-digit', month: '2-digit', year: 'numeric' });
@@ -23,7 +23,7 @@ function ComicsList({ comics, showbtn, handleDelete, handleEdit }) {
                                     <Grid item key={comic.id} xs={10} >
                                         <Card sx={{ display: "flex" }}>
                                             {
-                                                comic.image !== "" ?
+                                                comic.image !== "" && comic.image !== null ?
                                                     <CardMedia sx={{ height: 220, width: 230, }} component="img" image={`src/images/${comic.image}`} alt="Sarjakuvan kansikuva" />
                                                     : <CardContent sx={{ textAlign: "center", height: 220, width: 200, backgroundColor: "grey.300" }}><Typography >Ei kuvaa</Typography></CardContent>
                                             }

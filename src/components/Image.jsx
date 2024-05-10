@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 
 function Image({ image }) {
 
-    if (image === undefined || image === "") {
+    if (image === undefined || image === "" || image === null) {
         return (
             <Box sx={{ height: "400px", width: "320px", marginTop: "10px", backgroundColor: "grey.300", display: "flex", alignItems: "center", justifyContent: "center" }}><Typography >Ei saatavilla olevaa kuvaa</Typography></Box>
         )
