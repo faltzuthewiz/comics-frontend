@@ -2,10 +2,10 @@ import Filter from "./Filter";
 import Results from "./Results";
 import { useState } from "react";
 import { useEffect } from "react";
-import { deleteComic, editComic, getComics } from "./comics";
+import { deleteComic, getComics } from "./comics";
+import ErrorIcon from '@mui/icons-material/Error';
 
-import { Box } from "@mui/material"
-import EditComicForm from "./EditComicForm";
+import { Box, Grid, Typography } from "@mui/material"
 
 function ListPage() {
 
@@ -57,19 +57,22 @@ function ListPage() {
         setComicsToShow(comics.filter((comic) => comic.id !== id))
     }
 
-    const handleEdit = (id) => {
-        const comic = comics.find(n => n.id === id)
-        console.log(comic)
-        return comic
-
-    }
-
-    //console.log(comics)
-
     return (
         <Box sx={{ marginTop: "100px" }}>
-            <Filter onChange={handleFilter} value={filterName} />
-            <Results comics={comicsToShow} showbtn={handleShowButton} onChange={handleFilter} handleDelete={handleDelete} value={filterName} handleEdit={handleEdit} />
+            {
+                comics !== undefined && comics.length > 0 ? (
+                    <>
+                        <Filter onChange={handleFilter} value={filterName} />
+                        <Results comics={comicsToShow} showbtn={handleShowButton} onChange={handleFilter} handleDelete={handleDelete} value={filterName} />
+                    </>
+                ) :
+                    <Grid container sx={{ gap: '20px', justifyContent: 'center', alignItems: 'center', py: '20px', height: '400px' }}>
+                        <Box sx={{ color: "error.main", padding: 2, backgroundColor: "error.main", display: "flex", alignItems: "center" }}>
+                            <ErrorIcon fontSize="large" sx={{ color: "error.contrastText", display: "inline" }} />
+                            <Typography variant="h3" sx={{ color: "error.contrastText", display: "inline", marginLeft: 1 }}>Virhe! Ei sarjakuvia saatavilla.</Typography>
+                        </Box>
+                    </Grid>
+            }
         </Box>
     )
 }

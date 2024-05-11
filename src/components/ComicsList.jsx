@@ -18,7 +18,6 @@ function ComicsList({ comics, showbtn, handleDelete }) {
                     <Grid container spacing={2} >
                         {
                             comics.map(comic => {
-                                let image = encodeURIComponent(comic.image)
                                 return (
                                     <Grid item key={comic.id} xs={10} >
                                         <Card sx={{ display: "flex" }}>
@@ -39,7 +38,7 @@ function ComicsList({ comics, showbtn, handleDelete }) {
                                                 <Typography>Luettu: {formatDate(comic.dateRead)}</Typography>
                                             </CardContent>
                                             <CardActions sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-                                                <Button variant="contained" color="primary" onClick={() => showbtn(comic.id)} sx={{ width: "100%", height: "100%" }} >Näytä lisätietoja</Button>
+                                                <Button variant="contained" color="primary" onClick={() => showbtn(comic.id)} sx={{ width: "100%", height: "100%", marginLeft: "8px" }} >Näytä lisätietoja</Button>
                                                 <Button variant="contained" color="secondary" sx={{ width: "100%", height: "100%" }} component={Link} to={'/muokkaa/' + comic.id} ><EditIcon />Muokkaa</Button>
                                                 <Button variant="contained" color="error" onClick={() => handleDelete(comic.id)} sx={{ width: "100%", height: "100%" }}><DeleteIcon />Poista</Button>
                                             </CardActions>

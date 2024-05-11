@@ -44,8 +44,6 @@ function ImageCarousel() {
         getAllComics()
     }, [])
 
-    console.log(comics)
-
     let images = []
     if (comics && comics.length > 0) {
         images = comics.map(({ image }) => image)
@@ -71,10 +69,9 @@ function ImageCarousel() {
                         <Grid container sx={{ gap: '20px', justifyContent: 'center', alignItems: 'center', py: '20px', height: '400px' }}>
                             <Box sx={{ color: "error.main", padding: 2, backgroundColor: "error.main", display: "flex", alignItems: "center" }}>
                                 <ErrorIcon fontSize="large" sx={{ color: "error.contrastText", display: "inline" }} />
-                                <Typography variant="h3" sx={{ color: "error.contrastText", display: "inline", marginLeft: 1 }}>Ei kuvia saatavilla!</Typography>
+                                <Typography variant="h3" sx={{ color: "error.contrastText", display: "inline", marginLeft: 1 }}>Virhe! Ei kuvia saatavilla.</Typography>
                             </Box>
                         </Grid>
-
                 }
             </Carousel>
         </Box>
