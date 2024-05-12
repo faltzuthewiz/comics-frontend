@@ -23,7 +23,7 @@ function ComicsList({ comics, showbtn, handleDelete }) {
                                         <Card sx={{ display: "flex" }}>
                                             {
                                                 comic.image !== "" && comic.image !== null ?
-                                                    <CardMedia sx={{ height: 220, width: 230, }} component="img" image={`src/images/${comic.image}`} alt="Sarjakuvan kansikuva" />
+                                                    <CardMedia sx={{ height: 220, width: 230, }} component="img" image={"http://localhost:8080/download/" + comic.image} alt="Sarjakuvan kansikuva" />
                                                     : <CardContent sx={{ textAlign: "center", height: 220, width: 200, backgroundColor: "grey.300" }}><Typography >Ei kuvaa</Typography></CardContent>
                                             }
                                             <CardContent sx={{ flexGrow: 8 }}>

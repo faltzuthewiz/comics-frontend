@@ -8,7 +8,7 @@ function Image({ image }) {
         )
     } else {
         return (
-            <Box component="img" src={"/src/images/" + image} alt="sarjakuvan kansikuva" sx={{ maxWidth: "320px", marginTop: "10px", }} />
+            <Box component="img" src={"http://localhost:8080/download/" + image} alt="sarjakuvan kansikuva" sx={{ maxWidth: "320px", marginTop: "10px", }} />
         )
     }
 }
