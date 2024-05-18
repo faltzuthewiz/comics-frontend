@@ -9,7 +9,7 @@ import fi from 'date-fns/locale/fi';
 import { DesktopDatePicker } from "@mui/x-date-pickers";
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 
-import { addComic, editComic, getOneComic } from "./comics";
+import { editComic, getOneComic } from "./comics";
 
 import { useParams } from "react-router";
 

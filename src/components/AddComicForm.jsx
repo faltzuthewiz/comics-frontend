@@ -5,6 +5,7 @@ import { Box, Button, FormControl, FormControlLabel, InputLabel, MenuItem, Paper
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3';
 import fi from 'date-fns/locale/fi';
+import { Link } from "react-router-dom";
 
 import { DesktopDatePicker } from "@mui/x-date-pickers";
 import FileUploadIcon from '@mui/icons-material/FileUpload';
@@ -32,6 +33,8 @@ function AddComicForm() {
         ownThoughts: "",
     })
 
+    const [showBox, setShowBox] = useState(false)
+
     const [text, setText] = useState("")
 
     const change = (e) => {
@@ -41,50 +44,50 @@ function AddComicForm() {
         setComic({
             ...comic,
             [name]: newValue,
-            // id: comicsList.length + 1,
         })
 
         setText("")
+        setShowBox(false)
     }
 
     const changeCheck = (e) => {
         setComic({
             ...comic,
             [e.target.name]: e.target.checked,
-            // id: comicsList.length + 1,
         })
 
         setText("")
+        setShowBox(false)
     }
 
     const changeDate = (e) => {
         setComic({
             ...comic,
             dateRead: e,
-            //  id: comicsList.length + 1,
         })
 
         setText("")
+        setShowBox(false)
     }
 
     const changeLanguage = (e) => {
         setComic({
             ...comic,
             language: e.target.value,
-            //  id: comicsList.length + 1,
         })
 
         setText("")
+        setShowBox(false)
     }
 
     const changeImage = (e) => {
         setComic({
             ...comic,
             image: e.target.files[0],
-            //  id: comicsList.length + 1,
         })
 
         setText("")
+        setShowBox(false)
     }
 
     let imageName = ''
@@ -134,8 +137,10 @@ function AddComicForm() {
                 ownThoughts: "",
             })
             setText('Uusi sarjakuva lisätty!')
+            setShowBox(true)
         } catch (error) {
             setText('Uuden sarjakuvan lisääminen ei onnistunut!')
+            setShowBox(false)
         }
     }
 
@@ -231,6 +236,11 @@ function AddComicForm() {
                 <Button sx={{ margin: "10px" }} variant="contained" color="warning" onClick={emptyChanges}>Tyhjennä</Button>
 
                 <Typography>{text}</Typography>
+                {showBox && (
+                    <Box sx={{ border: "solid 5px", padding: 1, borderColor: "secondary.main" }}>
+                        <Typography>Lisää toinen sarjakuva täyttämällä ylläoleva lomake tai tarkastele sarjakuvalistaa <Link to="/listaa">klikkaamalla tästä</Link></Typography>
+                    </Box>
+                )}
             </Box>
         </Paper>
     )
