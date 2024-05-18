@@ -5,7 +5,7 @@ import ErrorIcon from '@mui/icons-material/Error';
 
 import { getComics } from "./comics";
 
-import { red, blue, green, yellow, lightBlue, deepPurple, teal, grey } from '@mui/material/colors'
+import { yellow, deepPurple, teal, } from '@mui/material/colors'
 
 const palette = [teal['A400'], deepPurple[900], yellow['A200']];
 
@@ -54,6 +54,7 @@ function PieChartMUI() {
             {comics !== undefined && comics.length > 0 ? (
                 <>
                     <Typography variant="h4">Luettujen sarjakuvien kielet</Typography>
+                    <Typography>Sarjakuvia on yhteensä {comics.length}</Typography>
                     <PieChart
                         colors={palette}
                         series={[
@@ -68,7 +69,7 @@ function PieChartMUI() {
                         width={400}
                         height={200}
                     />
-                    <Typography>Sarjakuvia on yhteensä {comics.length}</Typography>
+                    <Box sx={{ height: "380px" }}></Box>
                 </>
             ) :
                 <Grid container sx={{ gap: '20px', justifyContent: 'center', alignItems: 'center', py: '20px', height: '400px' }}>

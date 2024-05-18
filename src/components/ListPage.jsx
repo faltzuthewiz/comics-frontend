@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { deleteComic, getComics } from "./comics";
 import ErrorIcon from '@mui/icons-material/Error';
-
+import Footer from "./Footer";
 import { Box, Grid, Typography } from "@mui/material"
 
 function ListPage() {
@@ -73,6 +73,7 @@ function ListPage() {
                         </Box>
                     </Grid>
             }
+            <Footer />
         </Box>
     )
 }

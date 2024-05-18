@@ -11,6 +11,7 @@ import { DesktopDatePicker } from "@mui/x-date-pickers";
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 
 import { addComic } from "./comics";
+import Footer from "./Footer";
 
 function AddComicForm() {
 
@@ -166,83 +167,86 @@ function AddComicForm() {
     }
 
     return (
-        <Paper sx={{ maxWidth: 1200, margin: "auto", marginTop: "120px", marginBottom: "40px", }}>
-            <Typography variant="h2">Lisää uusi sarjakuva</Typography>
+        <>
+            <Paper sx={{ maxWidth: 1200, margin: "auto", marginTop: "120px", marginBottom: "40px", }}>
+                <Typography variant="h2">Lisää uusi sarjakuva</Typography>
 
-            <Box component='form' autoComplete='off' sx={{ '& .MuiTextField-root': { marginBottom: 2 } }}>
-                <TextField label='Sarjakuvan nimi' name="name" value={comic.name} onChange={change} fullWidth autoFocus required />
-                <br />
-                <TextField label='Teoksen lisänimi' name="additionalName" value={comic.additionalName} onChange={change} fullWidth />
-                <br />
-                <TextField label='Piirtäjä' name="artist" value={comic.artist} onChange={change} fullWidth required />
-                <br />
-                <TextField label='Käsikirjoittaja' name="writer" value={comic.writer} onChange={change} fullWidth required />
-                <br />
-                <FormControlLabel labelPlacement="start" label='Onko teos käännös?' control={<><Typography>Kyllä</Typography><Switch color="primary" checked={comic.translation} onChange={changeCheck} name="translation" /><Typography sx={{ marginLeft: "10px" }}>Ei</Typography></>} />
-                <br />
-                {comic.translation == true && (
-                    <>
-                        <TextField label='Alkuperäinen nimi' name="originalName" value={comic.originalName} onChange={change} fullWidth />
-                        <br />
-                    </>
-                )}
-                <TextField label='Kuvaus' name="details" value={comic.details} onChange={change} multiline rows='4' fullWidth required />
-                <br />
-                <TextField label='Sivumäärä' name="pages" value={comic.pages} onChange={change} fullWidth required />
-                <br />
-                <TextField label='Julkaisuvuosi' name="publicationYear" value={comic.publicationYear} onChange={change} fullWidth required />
-                <br />
-                <TextField label='ISBN' name="ISBN" value={comic.ISBN} onChange={change} fullWidth />
-                <br />
-                <FormControlLabel labelPlacement="start" label='Onko teos omakustanne?' control={<><Typography>Kyllä</Typography><Switch color="primary" checked={comic.selfPublished} onChange={changeCheck} name="selfPublished" /><Typography sx={{ marginLeft: "10px" }}>Ei</Typography></>} />
-                <br />
-                {comic.selfPublished == false && (
-                    <>
-                        <TextField label='Julkaisija' name="publisher" value={comic.publisher} onChange={change} fullWidth />
-                        <br />
-                    </>
-                )}
-                <FormControl fullWidth>
-                    <InputLabel id="language-label">Kieli</InputLabel>
-                    <Select
-                        labelId="language-label"
-                        value={comic.language}
-                        label="Kieli"
-                        onChange={changeLanguage}
-                    >
-                        <MenuItem value="Finnish">suomi</MenuItem>
-                        <MenuItem value="English">englanti</MenuItem>
-                        <MenuItem value="Swedish">ruotsi</MenuItem>
-                        <MenuItem value="German">saksa</MenuItem>
-                        <MenuItem value="Danish">tanska</MenuItem>
-                        <MenuItem value="Other">muu</MenuItem>
-                    </Select>
-                </FormControl>
-                <Typography>Luettu loppuun päivämäärällä</Typography>
-                <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={fi}>
-                    <DesktopDatePicker sx={{ width: '100%' }} onChange={changeDate} name="dateRead" value={comic.dateRead} />
-                </LocalizationProvider>
-                <TextField label='Omat ajatukset' name="ownThoughts" value={comic.ownThoughts} onChange={change} multiline rows='4' fullWidth required />
-                <br />
-                <input accept="image/*" name="image" id="image" type="file" onChange={changeImage} hidden />
-                <InputLabel htmlFor="image">
-                    <Typography sx={{ display: "inline" }}>Kansikuva</Typography>
-                    <Button component="span">
-                        <FileUploadIcon />
-                    </Button>
-                    <Typography sx={{ display: "inline" }}>{imageName}</Typography>
-                </InputLabel>
-                <Button variant="contained" onClick={addNewComic}>Tallenna</Button>
-                <Button sx={{ margin: "10px" }} variant="contained" color="warning" onClick={emptyChanges}>Tyhjennä</Button>
+                <Box component='form' autoComplete='off' sx={{ '& .MuiTextField-root': { marginBottom: 2 } }}>
+                    <TextField label='Sarjakuvan nimi' name="name" value={comic.name} onChange={change} fullWidth autoFocus required />
+                    <br />
+                    <TextField label='Teoksen lisänimi' name="additionalName" value={comic.additionalName} onChange={change} fullWidth />
+                    <br />
+                    <TextField label='Piirtäjä' name="artist" value={comic.artist} onChange={change} fullWidth required />
+                    <br />
+                    <TextField label='Käsikirjoittaja' name="writer" value={comic.writer} onChange={change} fullWidth required />
+                    <br />
+                    <FormControlLabel labelPlacement="start" label='Onko teos käännös?' control={<><Typography>Kyllä</Typography><Switch color="primary" checked={comic.translation} onChange={changeCheck} name="translation" /><Typography sx={{ marginLeft: "10px" }}>Ei</Typography></>} />
+                    <br />
+                    {comic.translation == true && (
+                        <>
+                            <TextField label='Alkuperäinen nimi' name="originalName" value={comic.originalName} onChange={change} fullWidth />
+                            <br />
+                        </>
+                    )}
+                    <TextField label='Kuvaus' name="details" value={comic.details} onChange={change} multiline rows='4' fullWidth required />
+                    <br />
+                    <TextField label='Sivumäärä' name="pages" value={comic.pages} onChange={change} fullWidth required />
+                    <br />
+                    <TextField label='Julkaisuvuosi' name="publicationYear" value={comic.publicationYear} onChange={change} fullWidth required />
+                    <br />
+                    <TextField label='ISBN' name="ISBN" value={comic.ISBN} onChange={change} fullWidth />
+                    <br />
+                    <FormControlLabel labelPlacement="start" label='Onko teos omakustanne?' control={<><Typography>Kyllä</Typography><Switch color="primary" checked={comic.selfPublished} onChange={changeCheck} name="selfPublished" /><Typography sx={{ marginLeft: "10px" }}>Ei</Typography></>} />
+                    <br />
+                    {comic.selfPublished == false && (
+                        <>
+                            <TextField label='Julkaisija' name="publisher" value={comic.publisher} onChange={change} fullWidth />
+                            <br />
+                        </>
+                    )}
+                    <FormControl fullWidth>
+                        <InputLabel id="language-label">Kieli</InputLabel>
+                        <Select
+                            labelId="language-label"
+                            value={comic.language}
+                            label="Kieli"
+                            onChange={changeLanguage}
+                        >
+                            <MenuItem value="Finnish">suomi</MenuItem>
+                            <MenuItem value="English">englanti</MenuItem>
+                            <MenuItem value="Swedish">ruotsi</MenuItem>
+                            <MenuItem value="German">saksa</MenuItem>
+                            <MenuItem value="Danish">tanska</MenuItem>
+                            <MenuItem value="Other">muu</MenuItem>
+                        </Select>
+                    </FormControl>
+                    <Typography>Luettu loppuun päivämäärällä</Typography>
+                    <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={fi}>
+                        <DesktopDatePicker sx={{ width: '100%' }} onChange={changeDate} name="dateRead" value={comic.dateRead} />
+                    </LocalizationProvider>
+                    <TextField label='Omat ajatukset' name="ownThoughts" value={comic.ownThoughts} onChange={change} multiline rows='4' fullWidth required />
+                    <br />
+                    <input accept="image/*" name="image" id="image" type="file" onChange={changeImage} hidden />
+                    <InputLabel htmlFor="image">
+                        <Typography sx={{ display: "inline" }}>Kansikuva</Typography>
+                        <Button component="span">
+                            <FileUploadIcon />
+                        </Button>
+                        <Typography sx={{ display: "inline" }}>{imageName}</Typography>
+                    </InputLabel>
+                    <Button variant="contained" onClick={addNewComic}>Tallenna</Button>
+                    <Button sx={{ margin: "10px" }} variant="contained" color="warning" onClick={emptyChanges}>Tyhjennä</Button>
 
-                <Typography>{text}</Typography>
-                {showBox && (
-                    <Box sx={{ border: "solid 5px", padding: 1, borderColor: "secondary.main" }}>
-                        <Typography>Lisää toinen sarjakuva täyttämällä ylläoleva lomake tai tarkastele sarjakuvalistaa <Link to="/listaa">klikkaamalla tästä</Link></Typography>
-                    </Box>
-                )}
-            </Box>
-        </Paper>
+                    <Typography>{text}</Typography>
+                    {showBox && (
+                        <Box sx={{ border: "solid 5px", padding: 1, borderColor: "secondary.main" }}>
+                            <Typography>Lisää toinen sarjakuva täyttämällä ylläoleva lomake tai tarkastele sarjakuvalistaa <Link to="/listaa">klikkaamalla tästä</Link></Typography>
+                        </Box>
+                    )}
+                </Box>
+            </Paper>
+            <Footer />
+        </>
     )
 }
 
