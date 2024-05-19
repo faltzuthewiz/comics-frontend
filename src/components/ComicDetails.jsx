@@ -1,5 +1,4 @@
 import Image from "./Image";
-import Footer from "./Footer";
 import { Box, Button, Grid, Typography } from "@mui/material";
 
 function ComicDetails({ comic, onChange, value }) {
@@ -9,7 +8,7 @@ function ComicDetails({ comic, onChange, value }) {
     }
 
     return (
-        <Box sx={{ marginLeft: "2%", marginRight: "2%", minHeight: "100vh" }}>
+        <Box sx={{ marginLeft: "5%", marginRight: "5%", minHeight: "100vh" }}>
             <Button variant="contained" color="secondary" onClick={onChange} value={value}>Palaa takaisin listaan</Button>
             <Typography variant="h2">Sarjakuvan "{comic[0].name}" tiedot</Typography>
             <Grid container spacing={2}>

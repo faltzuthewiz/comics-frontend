@@ -51,7 +51,6 @@ function ListPage() {
     }
 
     const handleDelete = (id) => {
-        const comic = comics.find(n => n.id === id)
         deleteComic(id)
         setComics(comics.filter((comic) => comic.id !== id))
         setComicsToShow(comics.filter((comic) => comic.id !== id))

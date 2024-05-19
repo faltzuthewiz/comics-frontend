@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 *.db
-images
+/back/images
 
 # Editor directories and files
 .vscode/*
