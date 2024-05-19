@@ -58,23 +58,25 @@ function ListPage() {
     }
 
     return (
-        <Box sx={{ marginTop: "100px" }}>
-            {
-                comics !== undefined && comics.length > 0 ? (
-                    <>
-                        <Filter onChange={handleFilter} value={filterName} />
-                        <Results comics={comicsToShow} showbtn={handleShowButton} onChange={handleFilter} handleDelete={handleDelete} value={filterName} />
-                    </>
-                ) :
-                    <Grid container sx={{ gap: '20px', justifyContent: 'center', alignItems: 'center', py: '20px', height: '400px' }}>
-                        <Box sx={{ color: "error.main", padding: 2, backgroundColor: "error.main", display: "flex", alignItems: "center" }}>
-                            <ErrorIcon fontSize="large" sx={{ color: "error.contrastText", display: "inline" }} />
-                            <Typography variant="h3" sx={{ color: "error.contrastText", display: "inline", marginLeft: 1 }}>Virhe! Ei sarjakuvia saatavilla.</Typography>
-                        </Box>
-                    </Grid>
-            }
+        <>
+            <Box sx={{ marginTop: "100px", minHeight: "100vh" }}>
+                {
+                    comics !== undefined && comics.length > 0 ? (
+                        <>
+                            <Filter onChange={handleFilter} value={filterName} />
+                            <Results comics={comicsToShow} showbtn={handleShowButton} onChange={handleFilter} handleDelete={handleDelete} value={filterName} />
+                        </>
+                    ) :
+                        <Grid container sx={{ gap: '20px', justifyContent: 'center', alignItems: 'center', py: '20px', height: '400px' }}>
+                            <Box sx={{ color: "error.main", padding: 2, backgroundColor: "error.main", display: "flex", alignItems: "center" }}>
+                                <ErrorIcon fontSize="large" sx={{ color: "error.contrastText", display: "inline" }} />
+                                <Typography variant="h3" sx={{ color: "error.contrastText", display: "inline", marginLeft: 1 }}>Virhe! Ei sarjakuvia saatavilla.</Typography>
+                            </Box>
+                        </Grid>
+                }
+            </Box>
             <Footer />
-        </Box>
+        </>
     )
 }
 

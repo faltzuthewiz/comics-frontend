@@ -1,6 +1,6 @@
 import ComicsList from "./ComicsList"
 import ComicDetails from "./ComicDetails"
-import { Box, Grid, Typography } from "@mui/material"
+import { Typography } from "@mui/material"
 
 function Results({ comics, showbtn, onChange, value, handleDelete }) {
 
@@ -14,7 +14,7 @@ function Results({ comics, showbtn, onChange, value, handleDelete }) {
         )
     } else if (comics.length === 0) {
         return (
-            <Typography>Ei hakutuloksia. Kokeile toista hakusanaa.</Typography>
+            <Typography sx={{ minHeight: "100vh", textAlign: "center" }}>Ei hakutuloksia. Kokeile toista hakusanaa.</Typography>
         )
     }
 
